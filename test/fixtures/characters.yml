@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  character_type: 1
+  level: 1
+  exp: MyString
+  integer: MyString
+
+two:
+  user: two
+  name: MyString
+  character_type: 1
+  level: 1
+  exp: MyString
+  integer: MyString
