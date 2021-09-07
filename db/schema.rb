@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2021_09_07_134610) do
 
   create_table "characters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.integer "character_type"
-    t.integer "level"
-    t.integer "exp"
+    t.string "name", default: "", null: false
+    t.integer "character_type", null: false
+    t.integer "level", default: 1, null: false
+    t.integer "exp", default: 0, null: false
     t.text "description"
     t.binary "photo"
     t.bigint "user_id"
