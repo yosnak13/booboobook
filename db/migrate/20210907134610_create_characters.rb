@@ -6,6 +6,7 @@ class CreateCharacters < ActiveRecord::Migration[5.2]
       t.integer :level
       t.integer :exp
       t.text :description
+      t.binary :photo
       t.references :user, foreign_key: true
 
       t.timestamps

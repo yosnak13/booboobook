@@ -6,6 +6,7 @@ one:
   level: 1
   exp: 1
   description: MyText
+  photo: 
   user: one
 
 two:
@@ -14,4 +15,5 @@ two:
   level: 1
   exp: 1
   description: MyText
+  photo: 
   user: two
