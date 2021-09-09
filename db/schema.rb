@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_115544) do
+ActiveRecord::Schema.define(version: 2021_09_09_224613) do
 
   create_table "characters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_115544) do
     t.text "description"
     t.binary "photo"
     t.integer "evolution_level"
+    t.string "evolve_into"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

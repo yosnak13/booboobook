@@ -5,6 +5,7 @@ class CreatePorks < ActiveRecord::Migration[5.2]
       t.text :description
       t.binary :photo
       t.integer :evolution_level
+      t.string :evolve_into
 
       t.timestamps
     end
