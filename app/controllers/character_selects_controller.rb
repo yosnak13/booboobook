@@ -1,29 +1,16 @@
-class CharactersController < ApplicationController
-  def index
-    @pork = Pork.all
-  end
+class CharacterSelectsController < ApplicationController
 
   def new
-    @characters = Character.new
+    @character = Character.new
   end
 
   def create
-    @pork.create_users_pork
     @character = current_user.Character.create(character_params)
     if @character.save
       redirect_to root_path
     else
       render root_path
     end
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   private
