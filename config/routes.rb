@@ -25,6 +25,5 @@ Rails.application.routes.draw do
       get "character_select", to: "character_selects#new"
     end
   end
-
   # resources :characters
 end
