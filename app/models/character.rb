@@ -1,5 +1,6 @@
 class Character < ApplicationRecord
   belongs_to :user
+  validates :user_id, presence: true
 
   def create_users_pork
     @pork1 = Pork.find(1)
