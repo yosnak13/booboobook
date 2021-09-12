@@ -1,4 +1,6 @@
 class CharactersController < ApplicationController
+  before_action :find_characers, only: [:show]
+
   def index
     @pork = Pork.all
   end
@@ -18,6 +20,7 @@ class CharactersController < ApplicationController
   end
 
   def show
+    # @character = current_user.characters.find(1)
   end
 
   def edit
@@ -31,5 +34,10 @@ class CharactersController < ApplicationController
   def character_params
     params.require(:characters).permit(
       :name, :character_type, :level, :exp, :description, :photo)
+  end
+
+  def find_character
+    @user = current_user
+    @character = current_user.characters.find(1)
   end
 end
