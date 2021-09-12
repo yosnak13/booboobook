@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index] do
     member do
-      get "character_select", :to => "character_select#new"
+      get "character_select", to: "character_selects#new"
     end
   end
 
