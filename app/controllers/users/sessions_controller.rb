@@ -19,7 +19,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(user)
-    characters_index_path
+    if current_user.characters.presence == nil
+      character_select_user_path(user)
+    else
+      characters_index_path
+    end
   end
 
   def after_sign_out_path_for(user)
