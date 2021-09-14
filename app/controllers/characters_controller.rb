@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-  before_action :find_characers, only: [:show]
+  before_action :find_character, only: [:show]
 
   def index
     @pork = Pork.all
@@ -38,6 +38,6 @@ class CharactersController < ApplicationController
 
   def find_character
     @user = current_user
-    @character = current_user.characters.find(1)
+    @character = @user.characters
   end
 end
