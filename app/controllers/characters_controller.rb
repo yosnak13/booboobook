@@ -20,7 +20,6 @@ class CharactersController < ApplicationController
   end
 
   def show
-    # @character = current_user.characters.find(1)
   end
 
   def edit
