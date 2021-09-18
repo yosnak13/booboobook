@@ -22,7 +22,7 @@ class Users::SessionsController < Devise::SessionsController
     if current_user.characters.presence == nil
       character_select_user_path(user)
     else
-      characters_index_path
+      character_path(id: current_user)
     end
   end
 

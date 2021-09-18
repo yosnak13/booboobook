@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get "characters/index"
-  get "characters/show"
-  get "characters/edit"
-  get "characters/update"
-
   devise_for :users, :controllers => {
     registrations: "users/registrations",
     sessions: "users/sessions",
@@ -23,7 +18,8 @@ Rails.application.routes.draw do
   resources :users, except: [:index] do
     member do
       get "character_select", to: "character_selects#new"
+      post "character_select", to: "character_selects#create"
+      resources :characters
     end
   end
-  # resources :characters
 end
