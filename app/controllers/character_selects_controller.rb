@@ -7,7 +7,6 @@ class CharacterSelectsController < ApplicationController
 
   def create
     @character = current_user.characters.build(character_params)
-    # @character.user_id = current_user.id
     if @character.save
       flash.now[:notice] = "読書をして#{@character.name}を育ててみましょう"
       redirect_to character_path(@character)
