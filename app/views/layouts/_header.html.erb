@@ -13,7 +13,7 @@
           <% if user_signed_in? %>
             <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
             <li class="nav-item dropdown">
-              <%= link_to user_path(@user), id: "navbarDropdown", class: "nav-link dropdown-toggle",
+              <%= link_to user_path(current_user), id: "navbarDropdown", class: "nav-link dropdown-toggle",
               role: "button", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } do %>
                   <%= current_user.name %> <span class="caret"></span>
               <% end %>
@@ -31,7 +31,9 @@
                 <% end %>
               </div>
             </li>
-          <% else %>
+          <% elsif admin_signed_in? %>  <%# 管理者がログインした場合 %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          <% else %>  <%# ログインしていないとき %>
             <li class="nav-item">
               <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
             </li>
