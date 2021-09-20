@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_character, only: [:show]
 
   def index

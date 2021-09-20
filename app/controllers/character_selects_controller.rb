@@ -1,4 +1,5 @@
 class CharacterSelectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_current_user, only: [:new, :show]
 
   def new
