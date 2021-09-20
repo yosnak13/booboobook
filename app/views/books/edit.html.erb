@@ -1,0 +1,16 @@
+<h1>Books#edit</h1>
+
+<%= form_with(model: @book, local: true) do |f| %>
+  <p><%= @book.book_name %></p>
+  <p><%= @book.isbn %></p>
+  <%
+=begin%>
+ <%= f.select :status, [["未読", "0"], ["読書中", "1"], ["読了", "2"], include_blank: "選択して下さい" %> 
+<%
+=end%>
+  <%= f.text_field :memo %>
+
+  <%= f.submit '更新' %>
+<% end %>
+
+<%= link_to '一覧に戻る', books_path %>

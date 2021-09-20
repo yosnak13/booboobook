@@ -1,0 +1,10 @@
+<h1>本の新規登録</h1>
+
+<h1>書籍名を入力してください</h1>
+<%= form_with(model: @book, local: true) do |f| %>
+  <%= f.text_field :book_name %>
+
+  <%= f.submit '登録' %>
+<% end %>
+
+<%= link_to '本棚に戻る', books_path %>

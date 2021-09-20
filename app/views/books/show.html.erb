@@ -1,0 +1,13 @@
+<h1>id: <%= @book.id %> の詳細</h1>
+
+<p><%= @book.book_name %></p>
+<p><%= @book.isbn %></p>
+<p><%= @book.status %></p>
+<p><%= @book.total_read_time %></p>
+<p><%= @book.memo %></p>
+<p><%= @book.created_at %></p>
+<p><%= @book.updated_at %></p>
+
+<%= link_to '編集する', edit_book_path(@book) %>
+<%= link_to 'このメッセージを削除する', @book, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<%= link_to '本棚へ戻る', books_path %>
