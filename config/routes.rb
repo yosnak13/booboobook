@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     member do
       get "character_select", to: "character_selects#new"
       post "character_select", to: "character_selects#create"
-      resources :characters
     end
+    resources :characters
   end
 end
