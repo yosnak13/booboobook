@@ -22,8 +22,7 @@ class Users::SessionsController < Devise::SessionsController
     if current_user.characters.presence == nil
       character_select_user_path(user)
     else
-      user_character_path(id: current_user, user_id: current_user.characters.ids)
-      # 後にバグるかも
+      users_path(user)
     end
   end
 
@@ -36,6 +35,7 @@ class Users::SessionsController < Devise::SessionsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(
-      :sign_in, keys: [:email, :name, :password, :password_confirmation])
+      :sign_in, keys: [:email, :name, :password, :password_confirmation]
+    )
   end
 end
