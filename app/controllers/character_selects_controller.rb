@@ -1,4 +1,5 @@
 class CharacterSelectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_current_user, only: [:new, :show]
 
   def new
@@ -10,7 +11,7 @@ class CharacterSelectsController < ApplicationController
     @character = current_user.characters.build(character_params)
     if @character.save
       flash.now[:notice] = "読書をして#{@character.name}を育ててみましょう"
-      redirect_to user_character_path(@character) #変更必要
+      redirect_to users_path(@user)
     else
       render :new
     end
