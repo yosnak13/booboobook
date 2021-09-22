@@ -48,8 +48,6 @@ class CharactersController < ApplicationController
   end
 
   def find_character
-    @user = current_user
-    @character = @user.characters
-    # @character = current_user.characters.find(params[:id])
+    @character = current_user.characters
   end
 end
