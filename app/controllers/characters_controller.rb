@@ -1,12 +1,11 @@
 class CharactersController < ApplicationController
-  before_action :find_character, only: [:show]
+  before_action :authenticate_user!
+  before_action :find_character, only: [:index, :show, :edit, :update]
 
   def index
-    @pork = Pork.all
   end
 
   def new
-    # @characters = Character.new
   end
 
   def create
@@ -26,9 +25,22 @@ class CharactersController < ApplicationController
   end
 
   def update
+    @current_exp = @character.character_exp
+    if @character.update(post_params)
+      @character.increment(:character_exp, @current_exp)
+      @character.save
+      @character.level_up
+      redirect_to character_path
+    else
+      redirect_to edit_character_path
+    end
   end
 
   private
+
+  def set_character
+    @character = Character.find(params[:id])
+  end
 
   def character_params
     params.require(:characters).permit(
@@ -38,5 +50,6 @@ class CharactersController < ApplicationController
   def find_character
     @user = current_user
     @character = @user.characters
+    # @character = current_user.characters.find(params[:id])
   end
 end
