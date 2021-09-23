@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     member do
       get "character_select", to: "character_selects#new"
       post "character_select", to: "character_selects#create"
+      get "help", to: "users#help"
     end
     resources :characters
   end

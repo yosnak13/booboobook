@@ -13,18 +13,18 @@
           <% if user_signed_in? %>
             <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
             <li class="nav-item dropdown">
-              <%= link_to user_path(@user), id: "navbarDropdown", class: "nav-link dropdown-toggle",
+              <%= link_to user_path(current_user), id: "navbarDropdown", class: "nav-link dropdown-toggle",
               role: "button", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } do %>
                   <%= current_user.name %> <span class="caret"></span>
               <% end %>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <%= link_to "ヘルプ", help_user_path(current_user), class: "dropdown-item" %>
+              </div>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <%= link_to "ログアウト", "#", class: "dropdown-item", action: logout_path,
                 onclick: "event.preventDefault(); document.getElementById('logout-form').submit();" %>
-
-                  <%= form_with url: logout_url, method: "get", id: "logout-form" do |f| %>
-                  <%= f.submit style: "display: none;"%>
-                <% end %>
 
                 <%= form_with url: logout_url, method: "get", id: "logout-form" do |f| %>
                   <%= f.submit style: "display: none;"%>

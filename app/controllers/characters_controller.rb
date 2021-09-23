@@ -38,18 +38,13 @@ class CharactersController < ApplicationController
 
   private
 
-  def set_character
-    @character = Character.find(params[:id])
-  end
-
   def character_params
     params.require(:characters).permit(
-      :name, :character_type, :level, :exp, :description, :photo)
+      :name, :character_type, :level, :exp, :description, :photo
+    )
   end
 
   def find_character
-    @user = current_user
-    @character = @user.characters
-    # @character = current_user.characters.find(params[:id])
+    @character = current_user.characters.first
   end
 end

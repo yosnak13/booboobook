@@ -1,8 +1,16 @@
-<h1>Users#index</h1>
 <h1>この画面に書籍登録、読書時間入力のリンクを貼付する予定。<br>
-選択しているキャラクターもこの画面に貼付
-</h1>
+選択しているキャラクターもこの画面に貼付</h1>
+
+<%= link_to "キャラクター画面", user_character_path(id: current_user.id, user_id: @character.ids) %>
+
+<br>
+
+<%= link_to "学習時間記録画面", edit_user_character_path(id: current_user.id, user_id: @character.ids) %>
+
+<br>
+
 <% @character.each do |pork| %>
   <%= pork.name %>
   <%= pork.description %>
+
 <% end %>
