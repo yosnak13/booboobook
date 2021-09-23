@@ -21,7 +21,8 @@ Rails.application.routes.draw do
       post "character_select", to: "character_selects#create"
     end
     resources :characters
+    resources :books
   end
 
-  resources :books
+  
 end
