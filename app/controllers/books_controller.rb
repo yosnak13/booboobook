@@ -1,7 +1,10 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_current_user
 
   def index
-    @books = Book.all
+    # 10ページごとにページネーション
+    @books = current_user.books.order(id: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -22,12 +25,10 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = current_user.books.find(params[:id])
   end
 
   def update
-    @book = Book.find(params[:id])
-
     if @book.update(book_params)
       redirect_to @book
     else
@@ -36,14 +37,24 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = book.find(params[:id])
+    @book = Book.find(params[:id])
     @book.destroy
 
-    redirect_to books_url
+    redirect_to user_books_url
   end
 
   private
+  
   def book_params
     params.require(:book).permit(:book_name)
+  end
+
+  def find_current_user
+    @user = current_user
+  end
+
+  def find_book
+    @user = current_user
+    @book = @user.books
   end
 end

@@ -1,6 +1,6 @@
 <h1>Books#edit</h1>
 
-<%= form_with(model: @book, local: true) do |f| %>
+<%= form_with(model: @book, url: {controller: 'books', action: 'update' }) do |f| %>
   <p><%= @book.book_name %></p>
   <p><%= @book.isbn %></p>
   <%
@@ -13,4 +13,4 @@
   <%= f.submit '更新' %>
 <% end %>
 
-<%= link_to '一覧に戻る', books_path %>
+<%= link_to '一覧に戻る', user_books_path %>

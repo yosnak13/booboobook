@@ -1,13 +1,14 @@
 <h1>本棚</h1>
 
-<%= link_to '本を登録する', new_book_path %>
+<%= link_to '本を登録する', new_user_book_path %>
 
 <ul>
-  <% @books.each do |book| %>
-    <li><%= link_to book.id, book %></li>
-    <li><%= book.book_name %></li>
-    <li><%= book.status %></li>
-    <li><%= book.total_read_time %></li>
-    <li><%= book.memo %></li>
+  <% @books.each do |book| %>    
+    <li><%= link_to book.id, user_book_path(id: current_user) %></li>
+    <li>タイトル：<%= book.book_name %></li>)
+    <li>ステータス：<%= book.status %></li>
+    <li>読書時間：<%= book.total_read_time %></li>
+    <li>メモ：<%= book.memo %></li>
   <% end %>
 </ul>
+<%= paginate @books %>
