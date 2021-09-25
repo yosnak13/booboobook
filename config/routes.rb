@@ -30,5 +30,8 @@ Rails.application.routes.draw do
       get "help", to: "users#help"
     end
     resources :characters
+    resources :books
   end
+
+  
 end
