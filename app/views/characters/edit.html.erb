@@ -7,7 +7,7 @@
 <p>登録</p>
 
 <p>手動で登録する</p>
-<%= form_with(model: @character, url: {controller: 'characters', action: 'update' } , local: true) do |f| %>
-  <p><%= f.number_field :exp, value: '10' %>分</p>
+<%= form_with(model: @character, url: {controller: 'characters', action: 'update' }, local: true ) do |f| %>
+  <p><%= f.number_field :exp, value: "0", min: 1, max: 600 %>分</p>
   <%= f.submit "送信" %>
 <% end %>
