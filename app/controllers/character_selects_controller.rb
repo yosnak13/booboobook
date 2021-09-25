@@ -21,7 +21,8 @@ class CharacterSelectsController < ApplicationController
 
   def character_params
     params.require(:character).permit(
-      :name, :character_type, :level, :exp, :description, :photo, :user_id)
+      :name, :character_type, :level, :exp, :description, :photo, :user_id
+    )
   end
 
   def find_current_user
