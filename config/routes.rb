@@ -32,6 +32,4 @@ Rails.application.routes.draw do
     resources :characters
     resources :books
   end
-
-  
 end
