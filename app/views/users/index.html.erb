@@ -9,8 +9,9 @@
 
 <br>
 
+<p>キャラクター情報</p>
 <% @character.each do |pork| %>
-  <%= pork.name %>
-  <%= pork.description %>
-
+  ぶたさん：<%= pork.name %>
+  レベル：<%= pork.level %>
+  経験値<%= pork.exp %>
 <% end %>
