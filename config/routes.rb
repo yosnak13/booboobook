@@ -28,10 +28,15 @@ Rails.application.routes.draw do
       get "character_select", to: "character_selects#new"
       post "character_select", to: "character_selects#create"
       get "help", to: "users#help"
-      get "reading_books", to: "reading_books#new"
-      post "reading_books", to: "reading_books#create"
+      # get "reading_books", to: "reading_books#new"
+      # post "reading_books", to: "reading_books#create"
     end
     resources :characters
-    resources :books
+    resources :books do
+      member do
+        get "reading_books", to: "reading_books#new"
+        post "reading_books", to: "reading_books#create"
+      end
+    end
   end
 end
