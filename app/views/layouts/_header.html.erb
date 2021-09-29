@@ -31,8 +31,6 @@
                 <% end %>
               </div>
             </li>
-          <% elsif admin_signed_in? %>  <%# 管理者がログインした場合 %>
-            <%= link_to "ログアウト（管理者）", destroy_admin_session_path, method: :delete %>
           <% else %>  <%# ログインしていないとき %>
             <li class="nav-item">
               <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
