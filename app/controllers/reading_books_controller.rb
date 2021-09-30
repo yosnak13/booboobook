@@ -7,8 +7,7 @@ class ReadingBooksController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @reading_books = @book.reading_books.build(reading_books_params)
+    @reading_books = @current_book.reading_books.build(reading_books_params)
     if @reading_books.save
       flash[:notice] = "学習時間を記録しました！"
       redirect_to users_path(current_user)
@@ -24,13 +23,7 @@ class ReadingBooksController < ApplicationController
     params.require(:reading_book).permit(:read_time, :date)
   end
 
-  def current_book # 動作チェック必要
+  def current_book
     @current_book = Book.find(params[:user_id])
-  end
-
-  def parent # memo
-    user = User.find(params[:id])
-    @book = Book.find(params[:user_id])
-    reading_book = ReadingBook.find(params[:book_id])
   end
 end
