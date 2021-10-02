@@ -1,0 +1,18 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+/* ログインボタン */
+.btn-primary {
+  background-color: #FCBCD4;
+  color: #fff;
+  border-color: #FCBCD4;
+}
+/* ログインボタンhover */
+.btn-primary:hover {
+  background-color: #FC6C8C;
+  color: #fff;
+  border-color: #FC6C8C;
+}
