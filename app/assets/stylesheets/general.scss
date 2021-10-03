@@ -1,6 +1,17 @@
+$pink: #FCBCD4;
+$deep_pink: #FC6C8C;
+$light_gray: #F1F1F1;
+$mid_gray: #D1CFCF;
+$dark_gray: #8E8D8D;
+$navy: #25507C;
+
 body {
-  padding-top: 100px;
+  padding-top: 57px;
+  @media screen and (max-width: 750px) {
+    padding-top: 18px;
+  }
 }
+
 .nav-bg {
   background-color: #FCBCD4;
 }
