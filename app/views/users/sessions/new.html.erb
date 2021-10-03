@@ -5,9 +5,9 @@
 
       <hr>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @user, url: user_session_path, local: true, class: '' do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="form-group">
+        <div class="form-group py-3">
           <%=
             f.email_field :email,
             class: "form-control #{"is-invalid" if alert }",
@@ -23,7 +23,7 @@
           <% end %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group py-3">
           <%=
             f.password_field :password,
             class: "form-control #{"is-invalid" if alert }",
@@ -39,18 +39,12 @@
           <% end %>
         </div>
 
-        <div class="form-group">
-          <%=  f.submit "ログイン" %>
+        <div class="form-group py-3 d-grid gap-1 col-4 mx-auto">
+          <%=  f.submit "ログイン", class: "btn btn-primary"%>
+          <%= image_tag('King.png') %>
         </div>
-
         <%= link_to "パスワードをお忘れの場合", new_user_password_path %>
         <% end %>
-
-      <hr>
-
-      <div class="form-group">
-        <%= link_to "新規登録", new_user_registration_path %>
-      </div>
     </div>
   </div>
 </div>

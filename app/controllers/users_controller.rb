@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_correct_user
+  before_action :authenticate_user!, except: [:top]
+  before_action :ensure_correct_user, except: [:top]
 
   def index
     @character = current_user.characters
@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   def update
     @user.update(user_params)
     redirect_to user_path(@user)
+  end
+
+  def top
   end
 
   def help
