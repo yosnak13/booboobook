@@ -1,0 +1,6 @@
+<%= render "layouts/admin_header" %>    <%# 管理者ヘッダーの表示 %>
+
+<h1>ユーザー一覧（管理画面）</h1>
+<% @users.each do |user|  %>
+  <p><%= user.name %></p>
+<% end %>

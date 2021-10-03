@@ -1,14 +1,12 @@
-<h1>character_selects#new</h1>
-
 <h1>育てるキャラクターを選択してね</h1>
-<%=  form_with model: @character, url: {controller: 'character_selects', action: 'create' } do |f| %>
+<%=  form_with model: @first_character, url: {controller: 'character_selects', action: 'create' } do |f| %>
   <%= f.hidden_field :name, value: @pork.name %>
   <%= f.hidden_field :character_type, value: 0 %>
   <%= f.hidden_field :level, value: 1 %>
   <%= f.hidden_field :exp, value: 0 %>
   <%= f.hidden_field :description, value: @pork.description %>
   <%= f.hidden_field :photo, value: @pork.photo %>
-  <%= f.hidden_field :user_id, value: @character.user_id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit %>
 <% end %>
 

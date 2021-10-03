@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_correct_user
-  
+  before_action :authenticate_user!, except: [:top]
+  before_action :ensure_correct_user, except: [:top]
+
+  def index
+    @character = current_user.characters
+  end
+
   def show
   end
 
@@ -13,7 +17,14 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def top
+  end
+
+  def help
+  end
+
   private
+
   def user_params
     params.require(:user).permit(:name, :email)
   end

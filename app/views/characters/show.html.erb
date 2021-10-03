@@ -1,5 +1,6 @@
-<h1>Characters#show</h1>
-<% @character.each do |pork| %>
-  <%= pork.name %>
-  <%= pork.description %>
-<% end %>
+<p>キャラ名：<%= @character.name %></p>
+<p>レベル：<%= @character.level %></p>
+<p>累計経験値：<%= @character.exp %></p>
+<p>次のレベルまで：</p>
+
+<p><%= link_to "学習時間を記録する", edit_user_character_path %></p>
