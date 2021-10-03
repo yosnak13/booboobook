@@ -1,7 +1,16 @@
-
-<!--編集します-->
-<%= form_with(model: @reading_books, url: {controller: 'reading_books', action: 'create' }, local: true ) do |f| %>
-  <%= f.date_select :date, default: { year: 2021, month: 9, day: 1 } %>
-  <%= f.number_field :read_time, value: "0", min: 1, max: 600 %>分
-  <%= f.submit "登録" %>
-<% end %>
+<div class="">
+  <%= form_with(model: @reading_books, url: {controller: 'reading_books', action: 'create' }, local: true ) do |f| %>
+    <%= f.date_select :date, default: { year: 2021, month: 9, day: 1 } %>
+    <%= f.number_field :read_time, value: "0", min: 1, max: 600, id: "value" %>分
+    <%= f.hidden_field :exp, value: "", id: "exp" %>
+    <%= f.hidden_field :total_read_time, value: "", id: "total_read_time" %>
+    <%= f.submit "登録" %>
+  <% end %>
+</div>
+<script>
+document.addEventListener("change", function(){
+  const copyValue = document.querySelector("#value").value;
+  document.querySelector("#exp").value = copyValue;
+  document.querySelector("#total_read_time").value = copyValue;
+});
+</script>
