@@ -1,7 +1,7 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+  <nav class="navbar navbar-expand-md bg-white">
     <div class="container">
-      <nav class="container-fluid navbar navbar-light bg-light fixed-top">
+      <nav class="container-fluid navbar nav-bg fixed-top">
         <a class="navbar-brand" href="/">Boo!Boo!Book</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -14,13 +14,13 @@
             <% if user_signed_in? %>
               <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
               <li class="nav-item dropdown">
-                <%= link_to user_path(current_user), id: "navbarDropdown", class: "nav-link dropdown-toggle",
+                <%= link_to user_path(current_user), id: "navbarDropdown", class: "nav-link",
                   role: "button", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } do %>
                     <%= current_user.name %> <span class="caret"></span>
                   <% end %>
             </li>
-                <%= link_to "ヘルプ", help_user_path(current_user), class: "dropdown-item" %>
-                <%= link_to "ログアウト", "#", class: "dropdown-item", action: logout_path,
+                <%= link_to "ヘルプ", help_user_path(current_user), class: "nav-link" %>
+                <%= link_to "ログアウト", "#", class: "nav-link", action: logout_path,
                   onclick: "event.preventDefault(); document.getElementById('logout-form').submit();" %>
 
                   <%= form_with url: logout_url, method: "get", id: "logout-form" do |f| %>
@@ -32,7 +32,7 @@
                 <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
             </li>
               <li class="nav-item dropdown">
-                <%= link_to "登録", new_user_registration_path, class: "nav-link" %>
+                <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
             </li>
             <% end %>
           </ul>
