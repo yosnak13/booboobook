@@ -14,8 +14,8 @@ $navy: #25507C;
 .btn-primary,
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #FCBCD4;
-  border-color: #FCBCD4;
+  background-color: $pink;
+  border-color: $pink;
 }
 
 /* focusされた時の枠線の色 */
@@ -28,14 +28,14 @@ $navy: #25507C;
 /* hover時（マウスカーソルを重ねた時）の色 */
 .btn-primary:hover {
   color: #fff;
-  background-color: #FC6C8C;
-  border-color: #FC6C8C;
+  background-color: $deep_pink;
+  border-color: $deep_pink;
 }
 
 /* active時の色 */
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #FC6C8C;
-  border-color: #FC6C8C;
+  background-color: $deep_pink;
+  border-color: $deep_pink;
 }
