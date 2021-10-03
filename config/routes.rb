@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     end
     resources :characters
     resources :books
+    collection do
+      get 'top', to: "users#top"
+    end
   end
 
   
