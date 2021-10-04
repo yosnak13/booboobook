@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    get 'users/index' => 'users#index'
+    get "users/index" => "users#index"
   end
-  
+
   devise_for :users, :controllers => {
     registrations: "users/registrations",
     sessions: "users/sessions",
@@ -28,10 +28,12 @@ Rails.application.routes.draw do
       get "character_select", to: "character_selects#new"
       post "character_select", to: "character_selects#create"
       get "help", to: "users#help"
+      get "study_times", to: "study_times#new"
+      post "study_times", to: "study_times#create"
     end
     resources :characters
     resources :books
   end
 
-  
+
 end
