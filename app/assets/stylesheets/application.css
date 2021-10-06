@@ -14,3 +14,15 @@
  *= require_tree .
  */
 
+
+/* アプリ内の文字色 */
+body {
+  color: #25507C;
+}
+/* アプリ内の文字サイズ */
+h1 {
+  font-size: 24px;
+}
+p {
+  font-size: 16px;
+}
