@@ -1,2 +1,16 @@
-<h1>StudyTimes#new</h1>
-<p>Find me in app/views/study_times/new.html.erb</p>
+<div class="">
+  <p>読書中の書籍：<%= @book.book_name %></p>
+</div>
+
+<div class="">
+  <p>育成中のキャラクター：<%= @character.name %></p>
+  <p>経験値：<%= @character.exp %></p>
+</div>
+
+<hr>
+
+<%= form_with(model: @study_time, url: {controller: 'study_times', action: 'create' }) do |f| %>
+  <%= f.date_select :study_date, selected: Date.today %>
+  <%= f.number_field :study_time, value: "0", min: 1, max: 600, id: "value" %>分
+  <%= f.submit "登録" %>
+<% end %>
