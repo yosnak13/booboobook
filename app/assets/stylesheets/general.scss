@@ -1,0 +1,23 @@
+$pink: #FCBCD4;
+$deep_pink: #FC6C8C;
+$light_gray: #F1F1F1;
+$mid_gray: #D1CFCF;
+$dark_gray: #8E8D8D;
+$navy: #25507C;
+
+body {
+  padding-top: 57px;
+  @media screen and (max-width: 750px) {
+    padding-top: 18px;
+  }
+}
+
+.nav-bg {
+  background-color: $pink;
+}
+.nav-link, .navbar-brand {
+  color: $navy;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(37, 80, 124, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}

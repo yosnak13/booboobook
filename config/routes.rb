@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'top', to: "users#top"
+
   devise_for :admins, :controllers=> {
     sessions: "admins/sessions"
   }
@@ -34,6 +36,4 @@ Rails.application.routes.draw do
     resources :characters
     resources :books
   end
-
-
 end
