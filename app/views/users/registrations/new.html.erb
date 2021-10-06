@@ -9,9 +9,7 @@
         <div class="form-group row">
           <%= f.label :name, "", class: "col-md-5 col-form-label text-md-left" do %>
             氏名
-            <span class="ml-1 samazon-require-input-label">
-              <span class="samazon-require-input-label-text">必須</span>
-            </span>
+            <span>必須</span>
           <% end %>
 
           <div class="col-md-7">
@@ -43,7 +41,7 @@
           <div class="col-md-7">
             <%=
               f.email_field :email,
-              class: "form-control #{"is-invalid" if @user.errors.messages[:email].present? } samazon-login-input",
+              class: "form-control #{"is-invalid" if @user.errors.messages[:email].present? }",
               autofocus: "true",
               required: "",
               autocomplete: "email",
@@ -51,9 +49,7 @@
             %>
 
             <% if @user.errors.messages[:email].present? %>
-              <span class="samazon-error-message">
-                <strong><%= @user.errors.full_messages_for(:email).first %></strong>
-              </span>
+              <strong><%= @user.errors.full_messages_for(:email).first %></strong>
             <% end %>
           </div>
         </div>
@@ -73,9 +69,7 @@
               autofocus: "true"
             %>
             <% if @user.errors.messages[:password].present? %>
-            <span class="samazon-error-message">
               <strong><%= @user.errors.full_messages_for(:password).first %></strong>
-            </span>
             <% end %>
             </div>
           </div>
