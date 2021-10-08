@@ -60,14 +60,14 @@ ActiveRecord::Schema.define(version: 2021_10_04_162917) do
   end
 
   create_table "study_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "book_id"
+    t.bigint "character_id", null: false
+    t.bigint "book_id", null: false
     t.time "study_date", null: false
     t.integer "study_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_study_times_on_book_id"
-    t.index ["user_id"], name: "index_study_times_on_user_id"
+    t.index ["character_id"], name: "index_study_times_on_character_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -90,5 +90,5 @@ ActiveRecord::Schema.define(version: 2021_10_04_162917) do
   add_foreign_key "books", "users"
   add_foreign_key "characters", "users"
   add_foreign_key "study_times", "books"
-  add_foreign_key "study_times", "users"
+  add_foreign_key "study_times", "characters"
 end
