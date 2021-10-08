@@ -1,7 +1,6 @@
 class CreateStudyTimes < ActiveRecord::Migration[5.2]
   def change
     create_table :study_times do |t|
-      t.references :character,  foreign_key: true, null: false
       t.references :book,       foreign_key: true, null: false
       t.time :study_date,       null: false
       t.integer :study_time,    null: false
