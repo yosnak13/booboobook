@@ -8,10 +8,4 @@ class Character < ApplicationRecord
     validates :exp, numericality: true
     validates :description, format: {with:/\A[ぁ-んァ-ン一-龥]/}
   end
-
-  def add_exp
-    @current_exp = @character.exp
-    @character.increment(:exp, @current_exp)
-    @character.save!
-  end
 end
