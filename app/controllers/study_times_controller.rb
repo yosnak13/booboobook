@@ -12,6 +12,8 @@ class StudyTimesController < ApplicationController
     if @study_time.save
       @character.increment(:exp, @study_time.study_time)
       @character.save
+      @book.increment(:total_read_time, @study_time.study_time)
+      @book.save
       flash.now[:notice] = "学習時間を記録しました！"
       redirect_to users_path(current_user)
     else
