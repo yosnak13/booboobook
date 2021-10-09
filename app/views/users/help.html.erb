@@ -1,8 +1,21 @@
-<h1>Boo!Boo!Bookとは？</h1>
-<p class="mx-3">Boo！Boo！Bookとは、本を読んだ時間を記録することにより、
-あなたの読書の習慣づけをサポートします。
-また、記録された読書の時間の長さに応じて、アプリ中に登場するキャラクターが成長します。
-読書を楽しみながら、キャラクター育成を楽しむ。そんなステキな時間を本アプリでお過ごしください！
-</p>
+<div class="helptitle">
+  <h1>Boo!Boo!Bookとは？ <%= image_tag "King.png" , size: "50x50" %></h1>
+</div>
 
-<%= link_to "戻る", users_path %>
+<div class="explanation">
+  <p class="mx-3">Boo ! Boo ! Bookとは、本を読んだ時間を記録することにより、あなたの読書の習慣づけをサポートするアプリです！<br>
+  毎日の読書時間が記録されると、アプリ内のぶたさんが成長していくシステムになっています。<br>
+  成長したぶたさんはどうなるのか・・・？<br>
+  毎日の読書を楽しみながらあなたのぶたさんを成長させましょう！<br>
+  </p>
+</div>  
+
+<div class="button">
+  <p class="mx-3">Boo ! Boo ! Bookに関するご質問は、
+コチラからメールにてお問い合わせください。
+  </p>
+  <%= link_to "問い合わせフォーム", users_path, class: "btn inquiryform" %>
+  <p></p>
+  <%= link_to "戻る", users_path, class: "btn back" %>
+  <p></p>
+</div>
