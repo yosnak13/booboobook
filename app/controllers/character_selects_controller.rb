@@ -1,31 +1,24 @@
 class CharacterSelectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_current_user, only: [:new, :show]
 
   def new
-    @first_character = Character.new
+    @first_registration = FirstRegistration.new
     @pork = Pork.find(1)
   end
 
   def create
-    @first_character = current_user.characters.create(character_params)
-    if @first_character.save
-      flash.now[:notice] = "読書をして#{@first_character.name}を育ててみましょう"
-      redirect_to users_path(@user)
-    else
-      render :new
-    end
+    @first_registration = FirstRegistration.new(first_params)
+    @first_registration.save
+    flash.now[:notice] = "書籍を登録しました！！読書をしてぶたさんを育ててみましょう"
+    redirect_to users_path(@user)
   end
 
   private
 
-  def character_params
-    params.require(:character).permit(
-      :name, :character_type, :level, :exp, :description, :photo, :user_id
+  def first_params
+    params.require(:first_registration).permit(
+      :name, :character_type, :level, :exp, :description, :photo, :user_id,
+      :book_name, :status
     )
-  end
-
-  def find_current_user
-    @user = current_user
   end
 end
