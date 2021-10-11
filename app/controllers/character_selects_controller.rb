@@ -8,7 +8,7 @@ class CharacterSelectsController < ApplicationController
   end
 
   def create
-    @first_character = current_user.characters.build(character_params)
+    @first_character = current_user.characters.create(character_params)
     if @first_character.save
       flash.now[:notice] = "読書をして#{@first_character.name}を育ててみましょう"
       redirect_to users_path(@user)
@@ -21,7 +21,8 @@ class CharacterSelectsController < ApplicationController
 
   def character_params
     params.require(:character).permit(
-      :name, :character_type, :level, :exp, :description, :photo, :user_id)
+      :name, :character_type, :level, :exp, :description, :photo, :user_id
+    )
   end
 
   def find_current_user

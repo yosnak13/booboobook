@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_045439) do
+ActiveRecord::Schema.define(version: 2021_10_04_162917) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 2021_09_20_045439) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "study_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.time "study_date", null: false
+    t.integer "study_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_study_times_on_book_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -78,4 +87,5 @@ ActiveRecord::Schema.define(version: 2021_09_20_045439) do
 
   add_foreign_key "books", "users"
   add_foreign_key "characters", "users"
+  add_foreign_key "study_times", "books"
 end
