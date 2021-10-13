@@ -1,8 +1,13 @@
-<h1>登録情報の変更</h1>
-<%= form_with model: @user do |f| %>
-  <p>アカウント名：<%= @user.name %></p>
-  <p>新しいアカウント名：<%= f.text_field :name %></p>
-  <p>メールアドレス：<%= @user.email %></p>
-  <p>新しいメールアドレス：<%= f.text_field :email %></p>
-  <%= f.submit "変更する" %>
-<% end %>
+<div class="row justify-content-center">
+  <div class="col-md-6 mx-auto">
+    <h1>登録情報の変更</h1>
+    <hr>
+    <%= form_with model: @user do |f| %>
+      <p>アカウント名：<%= @user.name %></p>
+      <p>新しいアカウント名：<%= f.text_field :name %></p>
+      <p>メールアドレス：<%= @user.email %></p>
+      <p>新しいメールアドレス：<%= f.text_field :email %></p>
+      <%= f.submit "変更する", class: "btn btn-pink" %>
+    <% end %>
+  </div>
+</div>
