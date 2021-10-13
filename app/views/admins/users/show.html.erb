@@ -1,0 +1,52 @@
+<%= render "layouts/admin_header" %>    <%# 管理者ヘッダーの表示 %>
+
+<div class="row justify-content-center">
+  <%= link_to "ユーザー一覧へ戻る", admins_users_index_path %>
+  <div class="col-md-9 mx-auto">
+    <h1>ユーザー詳細</h1>
+
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @user.id %></td>
+          <td><%= @user.name %></td>
+          <td><%= @user.email %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>本のタイトル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book|  %>
+        <tr>
+          <td><%= book.book_name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="py-3 d-grid gap-1 col-4 mx-auto">
+      <%=
+        link_to "退会させる",
+        admins_user_destroy_path(@user),
+        method: :delete,
+        "data-confirm" => "本当に退会させますか？\n※この操作は取り消しできません",
+        class: "btn btn-pink"
+      %>
+    </div>
+
+  </div>
+</div>

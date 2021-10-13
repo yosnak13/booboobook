@@ -1,6 +1,30 @@
 <%= render "layouts/admin_header" %>    <%# 管理者ヘッダーの表示 %>
 
-<h1>ユーザー一覧（管理画面）</h1>
-<% @users.each do |user|  %>
-  <p><%= user.name %></p>
-<% end %>
+<div class="row justify-content-center">
+  <div class="col-md-9 mx-auto">
+    <h1>ユーザー一覧</h1>
+
+    <hr>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user|  %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= link_to user.name, admins_user_path(user.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
