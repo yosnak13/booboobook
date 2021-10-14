@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2021_10_10_104946) do
     t.integer "total_read_time"
     t.integer "status"
     t.string "memo"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
