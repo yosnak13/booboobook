@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CharacterSelectsControllerTest < ActionDispatch::IntegrationTest
+class LevelSettingTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
