@@ -9,9 +9,11 @@
       <%= link_to "アカウント登録", new_user_registration_path, class: "btn btn-primary btn-registration py-3 d-grid gap-1 col-4 mx-auto" %>
     </p>
     <p>
-      既にアカウントをお持ちの方　　　　　　　　　
-      <%= link_to "ログイン", new_user_session_path %>
+      既にアカウントをお持ちの方　　　　　　
+      <%= link_to "ログイン", new_user_session_path,class: "text-center login-btn" %>
     </p>
+    <div class="top-image">
     <%= image_tag('Book.png') %>
+    </div>
   </div>
 </div>

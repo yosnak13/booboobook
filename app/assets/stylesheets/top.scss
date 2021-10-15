@@ -28,3 +28,26 @@ $navy: #25507C;
 		color: $navy;
 		font-weight: bold;
 	}
+
+.btn-registration:hover{
+	background-color: $deep_pink;
+	color: white;
+	font-weight: bold;
+}
+
+.btn-registration:active{
+	background-color: $deep_pink;
+	color: white;
+	font-weight: bold;
+}
+
+.login-btn{
+	font-weight: bold;
+}
+
+.top-image{
+	// position: absolute;
+	position:relative;
+	top: 80px;
+	text-align: center;
+}
