@@ -16,11 +16,10 @@
       </thead>
       <tbody>
         <% @users.each do |user|  %>
-        <tr>
+        <tr class="admins_user_index_clickable" data-link="<%= admins_user_path(user) %>">
           <td><%= user.id %></td>
           <td><%= user.name %></td>
           <td><%= user.email %></td>
-          <td><%= link_to user.name, admins_user_path(user.id) %></td>
         </tr>
         <% end %>
       </tbody>
