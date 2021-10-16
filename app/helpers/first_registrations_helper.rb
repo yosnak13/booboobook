@@ -1,0 +1,2 @@
+module FirstRegistrationsHelper
+end
