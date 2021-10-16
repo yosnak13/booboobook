@@ -1,3 +1,4 @@
+// アプリの基本色
 $pink: #FCBCD4;
 $deep_pink: #FC6C8C;
 $light_gray: #F1F1F1;
@@ -5,13 +6,20 @@ $mid_gray: #D1CFCF;
 $dark_gray: #8E8D8D;
 $navy: #25507C;
 
+// リセットCSS
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+// ヘッダーとbodyに余白がないよう調整
 body {
   padding-top: 57px;
   @media screen and (max-width: 750px) {
     padding-top: 18px;
   }
 }
-
+//ヘッダー
 .nav-bg {
   background-color: $pink;
 }
@@ -21,3 +29,57 @@ body {
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(37, 80, 124, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+///////// ボタン色設定 ここから /////////
+/* ピンクボタン_通常 */
+.btn-pink,
+.btn-pink.disabled, .btn-pink:disabled {
+  color: #fff;
+  background-color: $pink;
+  border-color: $pink;
+}
+/* ピンクボタン_focusされた時の枠線の色 */
+.btn-pink:focus, .btn-pink.focus,
+.btn-pink:not(:disabled):not(.disabled):active:focus, .btn-pink:not(:disabled):not(.disabled).active:focus,
+.show > .btn-pink.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(200, 123, 255, 0.5);
+}
+/* ピンクボタン_hover時（マウスカーソルを重ねた時）の色 */
+.btn-pink:hover {
+  color: #fff;
+  background-color: $deep_pink;
+  border-color: $deep_pink;
+}
+/* ピンクボタン_active時の色 */
+.btn-pink:not(:disabled):not(.disabled):active, .btn-pink:not(:disabled):not(.disabled).active,
+.show > .btn-pink.dropdown-toggle {
+  color: #fff;
+  background-color: $deep_pink;
+  border-color: $deep_pink;
+}
+/* グレーボタン_通常 */
+.btn-gray,
+.btn-gray.disabled, .btn-gray:disabled {
+  color: #fff;
+  background-color: $mid_gray;
+  border-color: $mid_gray;
+}
+/* グレーボタン_focusされた時の枠線の色 */
+.btn-gray:focus, .btn-gray.focus,
+.btn-gray:not(:disabled):not(.disabled):active:focus, .btn-gray:not(:disabled):not(.disabled).active:focus,
+.show > .btn-gray.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(113, 113, 129, 0.5);
+}
+/* グレーボタン_hover時（マウスカーソルを重ねた時）の色 */
+.btn-gray:hover {
+  color: #fff;
+  background-color: $dark_gray;
+  border-color: $dark_gray;
+}
+/* グレーボタン_active時の色 */
+.btn-gray:not(:disabled):not(.disabled):active, .btn-gray:not(:disabled):not(.disabled).active,
+.show > .btn-gray.dropdown-toggle {
+  color: #fff;
+  background-color: $dark_gray;
+  border-color: $dark_gray;
+}
+///////// ボタン色設定 ここまで /////////

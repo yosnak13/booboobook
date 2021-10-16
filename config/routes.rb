@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get "users/index" => "users#index"
+    get "users/:id" => "users#show", as: "user"
+    delete "users/:id" => "users#destroy", as: "user_destroy"
   end
 
   devise_for :users, :controllers => {
