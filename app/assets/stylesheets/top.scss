@@ -5,16 +5,18 @@ $mid_gray: #D1CFCF;
 $dark_gray: #8E8D8D;
 $navy: #25507C;
 
-.py-4{
+.backcolor{
 	background-color: $pink;
+	margin: 0 calc(50% - 50vw);
 }
+
 .h1color{
-    color: $navy;
+	color: $navy;
 }
 
 .introduction{
-    color: $navy;
-    font-size: 16px;
+	color: $navy;
+	font-size: 16px;
 }
 
 .background-pink {
@@ -24,9 +26,9 @@ $navy: #25507C;
 }
 
 .btn-registration{
-    background-color: white;
-		color: $navy;
-		font-weight: bold;
+	background-color: white;
+	color: $navy;
+	font-weight: bold;
 	}
 
 .btn-registration:hover{
