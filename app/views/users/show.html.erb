@@ -1,4 +1,11 @@
-<h1>マイページ</h1>
-<p>アカウント名：<%= @user.name %></p>
-<p>メールアドレス：<%= @user.email %></p>
-<%= link_to "登録情報を変更する", edit_user_path(@user) %>
+<div class="row justify-content-center">
+  <div class="col-md-6 mx-auto">
+    <h1>マイページ</h1>
+    <hr>
+    <p>アカウント名：<%= @user.name %></p>
+    <p>メールアドレス：<%= @user.email %></p>
+    <%= 
+      link_to "登録内容を変更する", edit_user_path(@user), class: "btn btn-pink" %>
+    <%= link_to "退会する", edit_user_path(@user), class: "btn btn-gray" %>
+  </div>
+</div>
