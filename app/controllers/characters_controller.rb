@@ -26,17 +26,17 @@ class CharactersController < ApplicationController
   end
 
   def update
-    @current_exp = @character.exp
-    if @character.update(post_params)
-      @character.increment(:exp, @current_exp)
-      @character.save
-      # @character.level_up
-      flash.now[:notice] = "学習時間を登録しました！"
-      redirect_to users_path(current_user)
-    else
-      flash.now[:notice] = "入力をやり直してください"
-      render :edit
-    end
+    # @current_exp = @character.exp
+    # if @character.update(post_params)
+    #   @character.increment(:exp, @current_exp)
+    #   @character.save
+    #   @character.level_up
+    #   flash.now[:notice] = "学習時間を登録しました！"
+    #   redirect_to users_path(current_user)
+    # else
+    #   flash.now[:notice] = "入力をやり直してください"
+    #   render :edit
+    # end
   end
 
   private

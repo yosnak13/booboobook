@@ -11,7 +11,16 @@ class StudyTimesController < ApplicationController
     @study_time = @book.study_time.create(study_times_params)
     if @study_time.save
       @character.increment(:exp, @study_time.study_time)
-      @character.save
+
+      levelSetting = LevelSetting.find_by(level: @character.level)
+      if levelSetting.needed_exp <= @character.exp
+        @character.level += 1
+        @character.update(level: @character.level)
+        @character.save
+      else
+        @character.save
+      end
+
       @book.increment(:total_read_time, @study_time.study_time)
       @book.save
       flash.now[:notice] = "学習時間を記録しました！"
