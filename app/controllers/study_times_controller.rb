@@ -10,19 +10,23 @@ class StudyTimesController < ApplicationController
   def create
     @study_time = @book.study_time.create(study_times_params)
     if @study_time.save
-      @character.increment(:exp, @study_time.study_time)
-
-      levelSetting = LevelSetting.find_by(level: @character.level)
-      if levelSetting.needed_exp <= @character.exp
-        @character.level += 1
-        @character.update(level: @character.level)
-        @character.save
-      else
-        @character.save
-      end
-
       @book.increment(:total_read_time, @study_time.study_time)
       @book.save
+
+      @character.increment(:exp, @study_time.study_time)
+      levelSetting = LevelSetting.find_by(level: @character.level)
+      @character.level += 1 if @character.exp >= levelSetting.needed_exp
+
+      while (levelSetting.needed_exp <= @character.exp) do
+        levelSetting = LevelSetting.find_by(level: @character.level)
+        @character.level += 1 if @character.exp >= levelSetting.needed_exp
+        levelSetting = LevelSetting.find_by(level: @character.level)
+        break if levelSetting.needed_exp > @character.exp
+      end
+      
+      @character.update(level: @character.level)
+      @character.save
+
       flash.now[:notice] = "学習時間を記録しました！"
       redirect_to users_path(current_user)
     else
