@@ -23,6 +23,14 @@ class UsersController < ApplicationController
   def help
   end
 
+  def hide
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] ="ご利用ありがとうございました。"
+    redirect_to top_path
+  end
+
   private
 
   def user_params
