@@ -18,7 +18,8 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      redirect_to @book
+      flash[:notice] = "書籍登録が完了しました"
+      redirect_to user_books_path
     else
       render :new
     end  
@@ -39,14 +40,13 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-
-    redirect_to user_books_url
+    redirect_to user_books_path
   end
 
   private
   
   def book_params
-    params.require(:book).permit(:book_name)
+    params.require(:book).permit(:book_name, :memo)
   end
 
   def find_current_user
