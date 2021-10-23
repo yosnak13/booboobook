@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'top', to: "users#top"
+  put '/users/:id/hide' => "users#hide", as: 'users_hide'
 
   devise_for :admins, :controllers=> {
     sessions: "admins/sessions"
