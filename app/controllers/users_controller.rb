@@ -46,5 +46,6 @@ class UsersController < ApplicationController
     @character = current_user.characters.find_by(user_id: current_user.id)
     @need_exp = LevelSetting.find_by(level: @character.level)
     @need_exp_for_next_level = @need_exp.needed_exp - @character.exp
+    @progress = (@need_exp.thresold - @need_exp_for_next_level) * 100 / @need_exp.thresold
   end
 end
