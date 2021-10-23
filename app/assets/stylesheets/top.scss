@@ -6,7 +6,6 @@ $dark_gray: #8E8D8D;
 $navy: #25507C;
 
 .backcolor{
-	background-color: $pink;
 	margin: 0 calc(50% - 50vw);
 }
 
@@ -29,6 +28,7 @@ $navy: #25507C;
 
 .btn-registration{
 	background-color: white;
+	width: 160px;
 	color: $navy;
 	font-weight: bold;
 	}
