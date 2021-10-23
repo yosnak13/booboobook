@@ -1,0 +1,74 @@
+<%= render "layouts/admin_header" %>    <%# 管理者ヘッダーの表示 %>
+
+<div class="row justify-content-center">
+  <%= link_to "ユーザー一覧へ戻る", admins_users_index_path %>
+  <div class="col-md-9 mx-auto">
+    <h1>ユーザー詳細</h1>
+
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+          <th>利用状況</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @user.id %></td>
+          <td><%= @user.name %></td>
+          <td><%= @user.email %></td>
+          <% if @user.is_deleted == true %>
+            <td>
+              <div class="badge bg-gray">退会済み</div>
+            </td>
+          <% else %>
+            <td>
+              <div class="badge bg-pink">利用中</div>
+            </td>
+          <% end %>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>本のタイトル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book|  %>
+        <tr>
+          <td><%= book.book_name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <button type="button" class="py-2 d-grid gap-1 col-4 mx-auto btn btn-pink" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      退会させる
+    </button>
+    <%# モーダルここから %>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>本当に退会させますか？<br>※この操作は取り消しできません。</p>
+          </div>
+          <div class="modal-footer">
+            <%= link_to "はい", admins_user_destroy_path(@user), method: :delete, class: "btn btn-pink" %>
+            <button type="button" class="btn btn-gray" data-bs-dismiss="modal">いいえ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# モーダルここまで %>
+  </div>
+</div>

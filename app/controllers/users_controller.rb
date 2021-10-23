@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top]
   before_action :ensure_correct_user, except: [:top]
+  before_action :need_exp, only: [:index]
 
   def index
     @character = current_user.characters
@@ -23,6 +24,14 @@ class UsersController < ApplicationController
   def help
   end
 
+  def hide
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] ="ご利用ありがとうございました。"
+    redirect_to top_path
+  end
+
   private
 
   def user_params
@@ -31,5 +40,10 @@ class UsersController < ApplicationController
 
   def ensure_correct_user
     @user = current_user
+  end
+
+  def need_exp
+    @character = current_user.characters.find_by(user_id: current_user.id)
+    @need_exp = LevelSetting.find_by(level: @character.level).needed_exp - @character.exp
   end
 end

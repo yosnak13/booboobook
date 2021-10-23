@@ -56,3 +56,12 @@ Admin.create!(
   email: ENV['ADMIN_MAIL'],
   password: ENV['ADMIN_PASSWORD']
 )
+
+require "csv"
+CSV.foreach('db/bbb_thresold.csv', headers: true) do |row|
+  LevelSetting.create(
+    level: row[0],
+    thresold: row[1],
+    needed_exp: row[2]
+  )
+end

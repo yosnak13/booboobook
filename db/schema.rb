@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_045439) do
+ActiveRecord::Schema.define(version: 2021_10_22_093310) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 2021_09_20_045439) do
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
+  create_table "level_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "level", default: 1, null: false
+    t.integer "thresold", default: 100, null: false
+    t.integer "needed_exp", default: 100, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "porks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "description"
@@ -57,6 +65,15 @@ ActiveRecord::Schema.define(version: 2021_09_20_045439) do
     t.string "evolve_into"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "study_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.time "study_date", null: false
+    t.integer "study_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_study_times_on_book_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,10 +89,12 @@ ActiveRecord::Schema.define(version: 2021_09_20_045439) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "books", "users"
   add_foreign_key "characters", "users"
+  add_foreign_key "study_times", "books"
 end
