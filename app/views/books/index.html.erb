@@ -1,31 +1,31 @@
 <div class="row justify-content-center">
-  <div class="col-md-6 mx-auto">
+  <div class="mx-auto">
     <h1>本棚</h1>
-    <div class="py-3 d-grid gap-1 col-4 mx-auto">
+    <div class="py-3 mb-5 d-grid gap-1 col-4 mx-auto">
       <%= link_to '本を登録する', new_user_book_path, class: "btn btn-pink" %>
     </div>
     <div class="row justify-content-md-center">
       <% @books.each do |book| %>
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-2">
             <%= link_to user_book_path(current_user, book) do %>
               <i class="fas fa-book fa-3x"></i>
             <% end %>
           </div>
-          <div class="col-md-10">
+          <div class="col-10">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-6">
                 <p><%= book.book_name %></p>
               </div>
-              <div class="col-md-3">
+              <div class="col-3">
                 <p><%= book.status %></p>
               </div>
-              <div class="col-md-3">
+              <div class="col-3">
                 <p><%= book.total_read_time %>分</p>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-12">
                 <p><%= book.memo %></p>
               </div>
             </div>
