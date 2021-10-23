@@ -12,6 +12,7 @@
           <th>ID</th>
           <th>ユーザー名</th>
           <th>メールアドレス</th>
+          <th>利用状況</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,15 @@
           <td><%= user.id %></td>
           <td><%= user.name %></td>
           <td><%= user.email %></td>
+          <% if user.is_deleted == true %>
+            <td>
+              <div class="badge bg-gray">退会済み</div>
+            </td>
+          <% else %>
+            <td>
+              <div class="badge bg-pink">利用中</div>
+            </td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>

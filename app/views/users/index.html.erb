@@ -9,9 +9,14 @@
 
 <br>
 
+<%= link_to "書籍登録", user_books_path(user_id: current_user.id) %>
+
+<br>
+
 <p>キャラクター情報</p>
 <% @character.each do |pork| %>
   ぶたさん：<%= pork.name %>
   レベル：<%= pork.level %>
   経験値<%= pork.exp %>
 <% end %>
+<p>次のレベルまで<%= @need_exp %></p>
