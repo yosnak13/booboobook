@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top]
   before_action :ensure_correct_user, except: [:top]
-  before_action :need_exp, only: [:index]
+  before_action :calulate_exp, only: [:index]
 
   def index
     @character = current_user.characters
@@ -42,8 +42,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def need_exp
+  def calulate_exp
     @character = current_user.characters.find_by(user_id: current_user.id)
-    @need_exp = LevelSetting.find_by(level: @character.level).needed_exp - @character.exp
+    @need_exp = LevelSetting.find_by(level: @character.level)
+    @need_exp_for_next_level = @need_exp.needed_exp - @character.exp
+    @progress = (@need_exp.thresold - @need_exp_for_next_level) * 100 / @need_exp.thresold
   end
 end

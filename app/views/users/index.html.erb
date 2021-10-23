@@ -1,22 +1,33 @@
-<h1>この画面に書籍登録、読書時間入力のリンクを貼付する予定。<br>
-選択しているキャラクターもこの画面に貼付</h1>
+<div class="">
+  <% @character.each do |pork| %>
+    <div>
+      <a><%= pork.name %> Lv.<%= pork.level %></a>
+    </div>
 
-<%= link_to "キャラクター画面", user_character_path(id: current_user.id, user_id: @character.ids) %>
+    <div class="progress">
+      <div
+      class="progress-bar"
+      role="progressbar"
+      style="width: <%= @progress %>%"
+      aria-valuenow=<%= @progress.to_s %>
+      aria-valuemin="0"
+      aria-valuemax="100">
+      </div>
+    </div>
 
-<br>
+    <div class="d-flex justify-content-end">
+      <p>EXP <%= @need_exp.thresold - @need_exp_for_next_level %>/<%= @need_exp.thresold %></p>
+    </div>
 
-<%= link_to "学習時間記録画面(本物)", study_times_user_path(id: current_user.id) %>
+    <div>
+      <%= pork.description %>
+    </div>
+  <% end %>
 
-<br>
-
-<%= link_to "書籍登録", user_books_path(user_id: current_user.id) %>
-
-<br>
-
-<p>キャラクター情報</p>
-<% @character.each do |pork| %>
-  ぶたさん：<%= pork.name %>
-  レベル：<%= pork.level %>
-  経験値<%= pork.exp %>
-<% end %>
-<p>次のレベルまで<%= @need_exp %></p>
+  <div class="d-flex justify-content-around">
+    <%= link_to image_tag("アイコン_貯金箱.png", class: "icon-size"), "#" %>
+    <%= link_to image_tag("アイコン_読書記録.png", class: "icon-size"), "#" %>
+    <%= link_to image_tag("アイコン_記録.png", class: "icon-size"), study_times_user_path(id: current_user.id) %>
+    <%= link_to image_tag("アイコン_本棚.png", class: "icon-size"), user_books_path(user_id: current_user.id) %>
+  </div>
+</div>
