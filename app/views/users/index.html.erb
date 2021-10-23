@@ -1,18 +1,6 @@
 <h1>この画面に書籍登録、読書時間入力のリンクを貼付する予定。<br>
 選択しているキャラクターもこの画面に貼付</h1>
 
-<%= link_to "キャラクター画面", user_character_path(id: current_user.id, user_id: @character.ids) %>
-
-<br>
-
-<%= link_to "学習時間記録画面(本物)", study_times_user_path(id: current_user.id) %>
-
-<br>
-
-<%= link_to "書籍登録", user_books_path(user_id: current_user.id) %>
-
-<br>
-
 <p>キャラクター情報</p>
 <% @character.each do |pork| %>
   ぶたさん：<%= pork.name %>
@@ -20,3 +8,20 @@
   経験値<%= pork.exp %>
 <% end %>
 <p>次のレベルまで<%= @need_exp %></p>
+
+
+<%= link_to "キャラクター画面", user_character_path(id: current_user.id, user_id: @character.ids) %>
+<%= link_to user_character_path(id: current_user.id, user_id: @character.ids) do %>
+  <i class="fas fa-piggy-bank fa-3x"></i>
+<% end %>
+
+<%= link_to "学習時間記録画面(本物)", study_times_user_path(id: current_user.id) %>
+<%= link_to study_times_user_path(id: current_user.id) do %>
+  <i class="fas fa-stopwatch fa-3x"></i>
+<% end %>
+
+<%= link_to "書籍登録", user_books_path(user_id: current_user.id) %>
+<%= link_to user_books_path(user_id: current_user.id) do %>
+  <i class="fas fa-book fa-3x"></i>
+<% end %>
+<br>
