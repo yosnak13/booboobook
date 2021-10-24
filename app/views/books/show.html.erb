@@ -3,7 +3,7 @@
     <div class="col-6">
       <p>書籍名：<%= @book.book_name %></p>
     </div>
-    <div class="col-2">
+    <div class="col-2">  <%# ステータスによってバッチの色を変更する %>
       <% if @book.status == "未読" %>
         <span class="badge bg-gray">未読</span>
       <% elsif @book.status == "読書中" %>

@@ -15,10 +15,16 @@
           <div class="col-10">
             <div class="row">
               <div class="col-6">
-                <p><%= book.book_name %></p>
+                <h4><%= book.book_name %></h4>
               </div>
-              <div class="col-3">
-                <p><%= book.status %></p>
+              <div class="col-3">  <%# ステータスによってバッチの色を変更する %>
+                <% if book.status == "未読" %>
+                  <span class="badge bg-gray">未読</span>
+                <% elsif book.status == "読書中" %>
+                  <span class="badge bg-pink">読書中</span>
+                <% else %>
+                  <span class="badge bg-navy">読了</span>
+                <% end %>
               </div>
               <div class="col-3">
                 <p><%= book.total_read_time %>分</p>
@@ -34,18 +40,10 @@
         </div>
       <% end %>
     </div>
-
-
-    <ul>
-      <% @books.each do |book| %>    
-        <li><%= link_to book.id, user_book_path(id: current_user) %></li>
-        <li>タイトル：<%= book.book_name %></li>
-        <li>ステータス：<%= book.status %></li>
-        <li>読書時間：<%= book.total_read_time %></li>
-        <li>メモ：<%= book.memo %></li>
-      <% end %>
-    </ul>
-    <%= paginate @books %>
+    <%# ページネーション %>
+    <div class="pagination justify-content-center">
+      <%= paginate @books %>
+    </div>
 
   </div>
 </div>
