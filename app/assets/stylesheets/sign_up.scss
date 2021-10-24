@@ -28,6 +28,33 @@ $navy: #25507C;
   margin-top: 40%;
 }
 
+/* ピンクボタン_通常 */
+.btn-pink,
+.btn-pink.disabled, .btn-pink:disabled {
+  color: #fff;
+  background-color: $pink;
+  border-color: $pink;
+}
+/* ピンクボタン_focusされた時の枠線の色 */
+.btn-pink:focus, .btn-pink.focus,
+.btn-pink:not(:disabled):not(.disabled):active:focus, .btn-pink:not(:disabled):not(.disabled).active:focus,
+.show > .btn-pink.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(200, 123, 255, 0.5);
+}
+/* ピンクボタン_hover時（マウスカーソルを重ねた時）の色 */
+.btn-pink:hover {
+  color: #fff;
+  background-color: $deep_pink;
+  border-color: $deep_pink;
+}
+/* ピンクボタン_active時の色 */
+.btn-pink:not(:disabled):not(.disabled):active, .btn-pink:not(:disabled):not(.disabled).active,
+.show > .btn-pink.dropdown-toggle {
+  color: #fff;
+  background-color: $deep_pink;
+  border-color: $deep_pink;
+}
+
 .justify-content-center{
 	margin-top: 10%;
 }
