@@ -12,35 +12,35 @@ Pork.create!(
       description: '大型で、毛色は白。日本の豚肉の主要な品種。',
       evolution_level: 20,
       evolve_into: '中ヨークシャー',
-      photo: open "./db/fixtures/ランドレース.png"
+      photo: open("./db/fixtures/ランドレース.png")
     },
     {
       name: '中ヨークシャー',
       description: '中型で、全体におおむね長方形。顔は短く、顔面はしゃくれている。色は白。飼養頭数が少なくなっているが、肉質の優れた品種である。',
       evolution_level: 30,
       evolve_into: '大ヨークシャー',
-      photo: open "./db/fixtures/ヨークシャー.png"
+      photo: open("./db/fixtures/ヨークシャー.png")
     },
     {
       name: '大ヨークシャー',
       description: '大型で、体積に富み、全体におおむね長方形。顔は長めで、顔面はわずかにしゃくれている。色は白。主要な雌系品種として飼養頭数も多い。',
       evolution_level: '',
       evolve_into: '',
-      photo: open "./db/fixtures/ヨークシャー.png"
+      photo: open("./db/fixtures/ヨークシャー.png")
     },
     {
       name: 'もち豚',
       description: 'もち豚は、東北の「みちのくもち豚」、宮城の「仙南もち豚」、新潟県の「越後もち豚」、福岡・熊本の「はかたもち豚」など、日本各地で独自の名前を付けて飼育されています。',
       evolution_level: 30,
       evolve_into: 'アグー豚',
-      photo: open "./db/fixtures/もち豚.png"
+      photo: open("./db/fixtures/もち豚.png")
     },
     {
       name: 'アグー豚',
       description: 'アグー豚は昔から沖縄で飼われてきた在来豚で、黒色の見た目で、毛深くクセのある長い毛と、西洋豚と比べて小型であることが特徴です。',
       evolution_level: '',
       evolve_into: '',
-      photo: open "./db/fixtures/アグー豚.png"
+      photo: open("./db/fixtures/アグー豚.png")
     }
   ]
 )
