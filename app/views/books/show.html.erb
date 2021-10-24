@@ -1,7 +1,7 @@
 <div class="row justify-content-center mt-5">
   <div class="row mx-auto">
     <div class="col-6">
-      <p>書籍名：<%= @book.book_name %></p>
+      <h4><%= @book.book_name %></h4>
     </div>
     <div class="col-2">  <%# ステータスによってバッチの色を変更する %>
       <% if @book.status == "未読" %>
@@ -13,7 +13,7 @@
       <% end %>
     </div>
     <div class="col-2">
-      <p>総読書時間：<%= @book.total_read_time_sec.utc.strftime('%R') %></p>
+      <p><%= @book.total_read_time_sec.utc.strftime('%R') %></p>
     </div>
   </div>
   <div class="row mx-auto">
