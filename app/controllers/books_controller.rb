@@ -27,12 +27,17 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = current_user.books.find(params[:id])
+    @book = Book.find(params[:id])
+    if current_user.id != @book.user_id
+      redirect_to user_books_path
+    end
   end
 
   def update
+    @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to @book
+      flash[:notice] = "書籍変更が完了しました"
+      redirect_to user_book_path(@book)
     else
       render :edit
     end
@@ -47,7 +52,7 @@ class BooksController < ApplicationController
   private
   
   def book_params
-    params.require(:book).permit(:book_name, :memo)
+    params.require(:book).permit(:book_name, :status, :memo)
   end
 
   def find_current_user
