@@ -7,6 +7,6 @@ class Book < ApplicationRecord
 
   def total_read_time_sec #秒数換算してTimeオブジェクトを返すメソッド
     self.total_read_time *= 60
-    self.total_read_time = Time.at(total_read_time)
+    self.total_read_time = Time.at(self.total_read_time)
   end
 end
