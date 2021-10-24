@@ -3,3 +3,4 @@ ja:
     attributes:
       book:
         book_name: 書籍名
+        status: ステータス
