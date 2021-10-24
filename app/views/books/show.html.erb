@@ -13,7 +13,7 @@
       <% end %>
     </div>
     <div class="col-2">
-      <p>総読書時間：<%= @book.total_read_time %> 分</p>
+      <p>総読書時間：<%= @book.total_read_time_sec.utc.strftime('%R') %></p>
     </div>
   </div>
   <div class="row mx-auto">

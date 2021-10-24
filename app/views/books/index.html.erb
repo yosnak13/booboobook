@@ -27,7 +27,7 @@
                 <% end %>
               </div>
               <div class="col-3">
-                <p><%= book.total_read_time %>分</p>
+                <p><%= book.total_read_time_sec.utc.strftime('%R') %></p>
               </div>
             </div>
             <div class="row">
