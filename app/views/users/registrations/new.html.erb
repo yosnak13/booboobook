@@ -1,13 +1,8 @@
-
-
 <div class="container">
-
   <div class="row justify-content-center">
     <div class="col-md-5">
       <h3 class="mt-3 mb-3"></h3>
-
       
-
         <%= form_with model: @user, url: user_registration_path, local: true, class: '' do |f| %>
         <div class="form-group row">
           <%= f.label :name, "", class: " col-form-label text-md-left" do %>
@@ -21,8 +16,7 @@
               class: "form-control #{"is-invalid" if @user.errors.messages[:name].present? }",
               autofocus: "true",
               required: "",
-              autocomplete: "name"
-              
+              autocomplete: "name"         
             %>
 
             <% if @user.errors.messages[:name].present? %>
@@ -47,8 +41,7 @@
               class: "form-control #{"is-invalid" if @user.errors.messages[:email].present? }",
               autofocus: "true",
               required: "",
-              autocomplete: "email"
-              
+              autocomplete: "email"    
             %>
 
             <% if @user.errors.messages[:email].present? %>
@@ -80,6 +73,9 @@
         <div class="form-group row">
           <%= f.label :password_confirmation, "", class: " col-form-label text-md-left" do %>
           パスワード（確認用）
+            <span class="ml-1">
+              <span class="">【必須】</span>
+            </span>
           <% end %>
           <div class="col-md-7">
             <%=
@@ -91,7 +87,7 @@
         </div>
 
         <div class="form-group py-3 d-grid gap-1 col-4 mx-auto">
-          <%=  f.submit "アカウント登録", class: "btn btn-primary btn-pink"%>
+          <%=  f.submit "アカウント登録", class: "btn btn-pink"%>
         </div>
       <% end %>
     </div>
