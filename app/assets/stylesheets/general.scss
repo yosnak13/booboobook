@@ -14,9 +14,9 @@ $navy: #25507C;
 }
 // ヘッダーとbodyに余白がないよう調整
 body {
-  padding-top: 57px;
+  padding-top: 55px;
   @media screen and (max-width: 750px) {
-  padding-top: 18px;
+    padding-top: 15px;
   }
 }
 //ヘッダー
