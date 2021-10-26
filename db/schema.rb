@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_24_173351) do
+ActiveRecord::Schema.define(version: 2021_10_26_094536) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_10_24_173351) do
   create_table "porks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "description"
-    t.binary "photo"
+    t.string "photo"
     t.integer "evolution_level"
     t.string "evolve_into"
     t.datetime "created_at", null: false
