@@ -1,4 +1,8 @@
+<h1>ぶたさん図鑑</h1>
+<hr>
 <% @pork.each do |pork| %>
+<div class="">
+  <%= image_tag pork.photo, size: "200x200" %>
   <%= pork.name %>
-  <%= pork.description %>
+</div>
 <% end %>
