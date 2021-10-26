@@ -19,11 +19,11 @@
         <div class="form-group py-3">
           <%= f.label :isbn, "isbnコード" %>
           <%= f.text_field :isbn, class: "form-control", placeholder: "数字のみ（任意）" %>
-          <%= f.hidden_field :status, value: 1 %>
+          <%= f.hidden_field :status, value: "読書中" %>
         </div>
         <div class="form-group py-3">
           <%= f.label :memo, "メモ" %>
-          <%= f.text_field :memo, class: "form-control", placeholder: "必須"  %>
+          <%= f.text_field :memo, class: "form-control", placeholder: "任意"  %>
         </div>
         <%= f.hidden_field :user_id, value: current_user.id %>
         <div class="form-group py-3 d-grid gap-1 col-4 mx-auto">
