@@ -13,5 +13,5 @@
   <%= f.date_select :study_date, selected: Date.today %>
   <%= f.number_field :study_time, value: "0", min: 1, max: 600, id: "value" %>分
   <%= f.hidden_field :book_id, value: @book.id%>
-  <%= f.submit "登録", class: "btn-pink" %>
+  <%= f.submit "登録", class: "btn btn-pink" %>
 <% end %>
