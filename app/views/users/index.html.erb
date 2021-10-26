@@ -1,5 +1,8 @@
 <div class="">
   <% @character.each do |pork| %>
+    <div class="text-center">
+      <%= image_tag (url_for(pork.photo)), class: "character-size" %>
+    </div>
     <div>
       <a><%= pork.name %> Lv.<%= pork.level %></a>
     </div>
