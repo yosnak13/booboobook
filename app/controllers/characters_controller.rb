@@ -13,10 +13,4 @@ class CharactersController < ApplicationController
   def show
     @pork.find(params[:id])
   end
-
-  def edit
-  end
-
-  def update
-  end
 end
