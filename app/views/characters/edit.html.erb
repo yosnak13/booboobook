@@ -1,13 +1,1 @@
-<p>現在読んでいる書籍</p>
-<%= @book.book_name %>
 
-<p>ストップウォッチではかる</p>
-<p>開始</p>
-<p>終了</p>
-<p>登録</p>
-
-<p>手動で登録する</p>
-<%= form_with(model: @character, url: {controller: 'characters', action: 'update' } , local: true) do |f| %>
-  <p><%= f.number_field :exp, value: '10' %>分</p>
-  <%= f.submit "送信" %>
-<% end %>
