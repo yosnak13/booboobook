@@ -1,7 +1,6 @@
 class CharactersController < ApplicationController
   def index
     @pork = Pork.all
-    @character = current_user.characters.all
   end
 
   def new
@@ -11,6 +10,5 @@ class CharactersController < ApplicationController
   end
 
   def show
-    @pork.find(params[:id])
   end
 end

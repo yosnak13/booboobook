@@ -2,7 +2,7 @@
 <hr>
 <% @pork.each do |pork| %>
 <div class="d-inline-flex justify-content-center">
-  <div class="flex-row text-center">
+  <div class="flex-row text-center m-2">
     <%= image_tag pork.photo, class: "pork-index" %>
     <p>No.<%= pork.id %>：<%= pork.name %></p>
   </div>
