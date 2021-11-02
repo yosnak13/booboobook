@@ -38,7 +38,7 @@ class StudyTimesController < ApplicationController
   private
 
   def current_book
-    @book = current_user.books.find_by(user_id: current_user.id)
+    @book = current_user.books.find_by(status: "読書中")
   end
 
   def current_character
