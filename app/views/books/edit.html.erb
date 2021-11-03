@@ -21,7 +21,7 @@
       </div>
       <div class="form-group py-3 col-3">
         <label class="col-form-label">ステータス</label>
-        <%= f.select :status, [['未読', '未読'], ['読書中', '読書中'], ['読了', '読了']], {include_blank: "選択して下さい"}, class: "form-control" %>
+        <%= f.select :status, Book.statuses.keys.map {|k| [k, k]}, {include_blank: "選択して下さい"}, class: "form-control" %>
       </div>
       <div class="form-group py-3 mx-auto">
         <label class="col-form-label">メモ</label>
