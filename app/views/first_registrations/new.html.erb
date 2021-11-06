@@ -1,29 +1,39 @@
-<p>boo!boo!bookは読書習慣を助けるアプリです。たくさん読書をしてぶたさんを育ててみましょう！</p>
-<%=  form_with model: @first_registration, url: {controller: 'first_registrations', action: 'create' } do |f| %>
-  <%= f.hidden_field :name, value: @pork.name %>
-  <%= f.hidden_field :character_type, value: 0 %>
-  <%= f.hidden_field :level, value: 1 %>
-  <%= f.hidden_field :exp, value: 0 %>
-  <%= f.hidden_field :description, value: @pork.description %>
-  <%= f.hidden_field :photo, value: @pork.photo %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
+<div class="row justify-content-center">
+  <div class="col-md-6 mx-auto">
+    <p>boo!boo!bookは読書習慣を助けるアプリです。たくさん読書をしてぶたさんを育ててみましょう！</p>
+    <%=  form_with model: @first_registration, url: {controller: 'first_registrations', action: 'create' } do |f| %>
+      <%= f.hidden_field :name, value: @pork.name %>
+      <%= f.hidden_field :character_type, value: 0 %>
+      <%= f.hidden_field :level, value: 1 %>
+      <%= f.hidden_field :exp, value: 0 %>
+      <%= f.hidden_field :description, value: @pork.description %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
 
-  <p>書籍を登録</p>
-  <div class="">
-    <%= f.label :book_name, "書籍名" %>
-    <%= f.text_field :book_name %>
+      <div class="text-center">
+        <p>あなたのぶたさんはこちら、<%= @pork.name %>です！</p>
+        <%= image_tag @pork.photo, size:"200x200" %>
+      </div>
+
+      <div class="row">
+        <p>書籍を登録</p>
+        <div class="form-group py-3">
+          <%= f.label :book_name, "書籍名" %>
+          <%= f.text_field :book_name, class: "form-control", placeholder: "必須" %>
+        </div>
+        <div class="form-group py-3">
+          <%= f.label :isbn, "isbnコード" %>
+          <%= f.text_field :isbn, class: "form-control", placeholder: "数字のみ（任意）" %>
+          <%= f.hidden_field :status, value: "読書中" %>
+        </div>
+        <div class="form-group py-3">
+          <%= f.label :memo, "メモ" %>
+          <%= f.text_field :memo, class: "form-control", placeholder: "任意"  %>
+        </div>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <%= f.submit "さあはじめよう！", class: "btn btn-pink" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <div class="">
-    <%= f.label :isbn, "isbnコード（任意）" %>
-    <%= f.text_field :isbn %>
-  </div>
-  <div class="">
-  </div>
-  <%= f.hidden_field :status, value: 1 %>
-  <div class="">
-    <%= f.label :memo, "メモ" %>
-    <%= f.text_field :memo %>
-  </div>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "さあはじめよう！" %>
-<% end %>
+</div>

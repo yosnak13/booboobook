@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @user = @book.user
   end
 
   def new
@@ -18,19 +19,25 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     if @book.save
-      redirect_to @book
+      flash[:notice] = "書籍登録が完了しました"
+      redirect_to user_books_path
     else
       render :new
     end  
   end
 
   def edit
-    @book = current_user.books.find(params[:id])
+    @book = Book.find(params[:id])
+    if current_user.id != @book.user_id
+      redirect_to user_books_path
+    end
   end
 
   def update
+    @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to @book
+      flash[:notice] = "書籍変更が完了しました"
+      redirect_to user_book_path(@book)
     else
       render :edit
     end
@@ -39,14 +46,13 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-
-    redirect_to user_books_url
+    redirect_to user_books_path
   end
 
   private
   
   def book_params
-    params.require(:book).permit(:book_name)
+    params.require(:book).permit(:book_name, :status, :memo)
   end
 
   def find_current_user

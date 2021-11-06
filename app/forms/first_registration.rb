@@ -17,7 +17,9 @@ class FirstRegistration
 
   def save
     Character.create(name: name, character_type: character_type, level: level,
-      exp: exp, description: description, user_id: user_id
+      exp: exp, description: description,
+      photo: ActiveStorage::Blob.create_after_upload!(io: File.open('./db/fixtures/Landrace.png'), filename: 'Landrace.png'),
+      user_id: user_id
     )
     Book.create(book_name: book_name, isbn: isbn, status: status, memo: memo, user_id: user_id)
   end

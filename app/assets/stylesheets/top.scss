@@ -31,35 +31,37 @@ $navy: #25507C;
 	height: 380px;
 }
 
+
 // 登録ボタンの通常時設定
-.btn-registration{
+.btn-registration {
 	background-color: white;
 	width: 160px;
 	color: $navy;
 	font-weight: bold;
-	}
+}
 
 // 登録ボタンのホバー時設定
-.btn-registration:hover{
+.btn-registration:hover {
+
 	background-color: $deep_pink;
 	color: white;
 	font-weight: bold;
 }
 
 // 登録ボタンのクリック時設定
-.btn-registration:active{
+.btn-registration:active {
 	background-color: $deep_pink;
 	color: white;
 	font-weight: bold;
 }
 
 // ログインボタン設定
-.login-btn{
+.login-btn {
 	font-weight: bold;
 }
 
 // ぶたさん写真
-.top-image{
+.top-image {
 	position:relative;
 	top: 80px;
 	text-align: center;

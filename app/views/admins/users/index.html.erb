@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @users.each do |user|  %>
+        <% @users.each do |user| %>
         <tr class="admins_user_index_clickable" data-link="<%= admins_user_path(user) %>">
           <td><%= user.id %></td>
           <td><%= user.name %></td>
