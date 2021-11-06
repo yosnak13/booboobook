@@ -1,8 +1,8 @@
-<div class="">
-  <p>読書中の書籍：<%= @book.book_name %></p>
+<div>
+  <p>読書中の書籍：<%= @book.book_name %><%= link_to "（変更する）", select_book_user_path %></p>
 </div>
 
-<div class="">
+<div>
   <p>育成中のキャラクター：<%= @character.name %></p>
   <p>累計経験値：<%= @character.exp %></p>
 </div>
@@ -12,6 +12,6 @@
 <%= form_with(model: @study_time, url: {controller: 'study_times', action: 'create' }) do |f| %>
   <%= f.date_select :study_date, selected: Date.today %>日
   <%= f.number_field :study_time, value: "0", min: 1, max: 600, id: "value" %>分
-  <%= f.hidden_field :book_id, value: @book.id%>
+  <%= f.hidden_field :book_id, value: @book.id %>
   <%= f.submit "登録", class: "btn btn-pink" %>
 <% end %>

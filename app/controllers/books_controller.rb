@@ -23,7 +23,7 @@ class BooksController < ApplicationController
       redirect_to user_books_path
     else
       render :new
-    end  
+    end
   end
 
   def edit
@@ -49,8 +49,31 @@ class BooksController < ApplicationController
     redirect_to user_books_path
   end
 
+  def select_book
+    @book = current_user.books.find_by(status: 1)
+    @books = current_user.books.where(status: 0).or(current_user.books.where(status: 2))
+  end
+
+  def change_book
+    #postされた書籍を拾う
+    @change_book_status = Book.find(params[:id])
+    #読書中の書籍を拾う
+    @edit_status_book = current_user.books.find_by(status: 1)
+    binding.pry
+    if @change_book_status.update(change_book_status_params)
+      @change_book_status.save
+      @edit_status_book.update(status: 2)
+      @edit_status_book.save
+      flash[:notice] = "読書する書籍を変更しました"
+      redirect_to study_times_user_path(current_user)
+    else
+      flash[:alart] = "書籍を変更できませんでした"
+      render :select_book
+    end
+  end
+
   private
-  
+
   def book_params
     params.require(:book).permit(:book_name, :status, :memo)
   end
@@ -59,8 +82,7 @@ class BooksController < ApplicationController
     @user = current_user
   end
 
-  def find_book
-    @user = current_user
-    @book = @user.books
+  def change_book_status_params
+    params.require(:book).permit(:status)
   end
 end

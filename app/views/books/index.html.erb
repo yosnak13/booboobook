@@ -22,6 +22,8 @@
                   <span class="badge bg-gray">未読</span>
                 <% elsif book.status == "読書中" %>
                   <span class="badge bg-pink">読書中</span>
+                <% elsif book.status == "中断中" %>
+                  <span class="badge bg-light-pink">中断中</span>
                 <% else %>
                   <span class="badge bg-navy">読了</span>
                 <% end %>

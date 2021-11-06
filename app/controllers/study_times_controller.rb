@@ -23,14 +23,14 @@ class StudyTimesController < ApplicationController
         levelSetting = LevelSetting.find_by(level: @character.level)
         break if levelSetting.needed_exp > @character.exp
       end
-      
+
       @character.update(level: @character.level)
       @character.save
 
-      flash.now[:notice] = "学習時間を記録しました！"
+      flash[:notice] = "学習時間を記録しました！"
       redirect_to users_path(current_user)
     else
-      flash.now[:danger] = "入力をやり直してください"
+      flash[:danger] = "入力をやり直してください"
       render :new
     end
   end
@@ -38,7 +38,13 @@ class StudyTimesController < ApplicationController
   private
 
   def current_book
-    @book = current_user.books.find_by(user_id: current_user.id)
+    @book = current_user.books.find_by(status: "読書中")
+    # if @book = nil
+    #   @book = current_user.books.first
+    #   @book.update(status: "読書中")
+    #   @book.save
+    #   flash[:danger] = "読書中の書籍が見当たらないため、最初の書籍を「読書中」に変更します"
+    # end
   end
 
   def current_character
