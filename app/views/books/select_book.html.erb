@@ -4,9 +4,12 @@
 <hr>
   <% @books.each do |book| %>
     <div class="row">
-      <p><%= book.book_name %>→これにする</p>
+    <%= form_with(model: @books, url: {controller: 'books', action: 'change_book' }) do |f| %>
+      <div class="d-flex">
+        <p><%= book.book_name %><%= f.hidden_field :status, value: "読書中" %></p>
+        <%= f.submit "これに変更する", class: "btn btn-pink" %>
+      </div>
+    <% end %>
     </div>
   <% end %>
 </div>
-
-
