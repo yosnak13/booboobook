@@ -39,6 +39,12 @@ class StudyTimesController < ApplicationController
 
   def current_book
     @book = current_user.books.find_by(status: "読書中")
+    # if @book = nil
+    #   @book = current_user.books.first
+    #   @book.update(status: "読書中")
+    #   @book.save
+    #   flash[:danger] = "読書中の書籍が見当たらないため、最初の書籍を「読書中」に変更します"
+    # end
   end
 
   def current_character
