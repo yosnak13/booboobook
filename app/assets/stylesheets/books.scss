@@ -1,3 +1,25 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$pink: #FCBCD4;
+$deep_pink: #FC6C8C;
+$light_gray: #F1F1F1;
+$mid_gray: #D1CFCF;
+$dark_gray: #8E8D8D;
+$navy: #25507C;
+
+.text-color{
+	color: #fff;
+	text-decoration: none;
+}
+
+.btn-primary{
+	background-color: $deep_pink;
+	border: none;
+}
+
+.list-btn-primary{
+	background-color: $navy;
+	border: none;
+}
