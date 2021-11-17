@@ -6,7 +6,7 @@
 <div class="d-grid gap-2 col-6 mx-auto">
 <button class="btn list-btn-primary" type="button"><%=link_to '登録している本一覧', new_user_book_path, class:"text-color"%></button>
 </div>
-
+<hr class="linebook">
 <ul>
   <% @books.each do |book| %>    
     <li><%= link_to book.id, user_book_path(id: current_user) %></li>
