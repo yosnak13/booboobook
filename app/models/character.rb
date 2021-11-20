@@ -1,5 +1,6 @@
 class Character < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
 
   with_options presence:true do
     validates :name, format: {with:/\A[ァ-ヶー－]+\z/}

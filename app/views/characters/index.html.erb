@@ -1,4 +1,10 @@
+<h1>ぶたさん図鑑</h1>
+<hr>
 <% @pork.each do |pork| %>
-  <%= pork.name %>
-  <%= pork.description %>
+<div class="d-inline-flex justify-content-center">
+  <div class="flex-row text-center m-2">
+    <%= image_tag pork.photo, class: "pork-index" %>
+    <p>No.<%= pork.id %>：<%= pork.name %></p>
+  </div>
+</div>
 <% end %>

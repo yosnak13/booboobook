@@ -10,8 +10,8 @@
 <hr>
 
 <%= form_with(model: @study_time, url: {controller: 'study_times', action: 'create' }) do |f| %>
-  <%= f.date_select :study_date, selected: Date.today %>
+  <%= f.date_select :study_date, selected: Date.today %>日
   <%= f.number_field :study_time, value: "0", min: 1, max: 600, id: "value" %>分
   <%= f.hidden_field :book_id, value: @book.id%>
-  <%= f.submit "登録" %>
+  <%= f.submit "登録", class: "btn btn-pink" %>
 <% end %>

@@ -5,6 +5,7 @@ $light_gray: #F1F1F1;
 $mid_gray: #D1CFCF;
 $dark_gray: #8E8D8D;
 $navy: #25507C;
+$dark_navy: #013f7c;
 
 // リセットCSS
 * {
@@ -14,9 +15,9 @@ $navy: #25507C;
 }
 // ヘッダーとbodyに余白がないよう調整
 body {
-  padding-top: 57px;
+  padding-top: 55px;
   @media screen and (max-width: 750px) {
-    padding-top: 18px;
+    padding-top: 15px;
   }
 }
 //ヘッダー
@@ -82,4 +83,49 @@ body {
   background-color: $dark_gray;
   border-color: $dark_gray;
 }
+/* ネイビーボタン_通常 */
+.btn-navy,
+.btn-navy.disabled, .btn-navy:disabled {
+  color: #fff;
+  background-color: $navy;
+  border-color: $navy;
+}
+/* ネイビーボタン_focusされた時の枠線の色 */
+.btn-navy:focus, .btn-navy.focus,
+.btn-navy:not(:disabled):not(.disabled):active:focus, .btn-navy:not(:disabled):not(.disabled).active:focus,
+.show > .btn-navy.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(1, 63, 124, 1);
+}
+/* ネイビーボタン_hover時（マウスカーソルを重ねた時）の色 */
+.btn-navy:hover {
+  color: #fff;
+  background-color: $dark_navy;
+  border-color: $dark_navy;
+}
+/* ネイビーボタン_active時の色 */
+.btn-navy:not(:disabled):not(.disabled):active, .btn-navy:not(:disabled):not(.disabled).active,
+.show > .btn-navy.dropdown-toggle {
+  color: #fff;
+  background-color: $dark_navy;
+  border-color: $dark_navy;
+}
 ///////// ボタン色設定 ここまで /////////
+
+///////// ページネーション設定 ここから /////////
+/*ページネーション自体のデザイン*/
+.pagination > li > a {          
+  border: none;     /*枠線をなくす*/
+  color: $navy;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination > .active > .page-link {     
+  background-color: $pink;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination > li > a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+///////// ページネーション設定 ここまで /////////
