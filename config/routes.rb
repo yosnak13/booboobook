@@ -37,7 +37,6 @@ Rails.application.routes.draw do
       post "study_times", to: "study_times#create"
       get "select_book", to: "books#select_book"
       post "select_book", to: "books#change_book"
-      # patch "change_book", to: "books#change_book"
     end
     resources :characters
     resources :books
