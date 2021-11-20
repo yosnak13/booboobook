@@ -9,11 +9,13 @@
 <hr class="linebook">
 <ul>
   <% @books.each do |book| %>    
-    <li><%= link_to book.id, user_book_path(id: current_user) %></li>
-    <li>タイトル：<%= book.book_name %></li>)
-    <li>ステータス：<%= book.status %></li>
-    <li>読書時間：<%= book.total_read_time %></li>
-    <li>メモ：<%= book.memo %></li>
+    <%= link_to book.id, user_book_path(id: current_user) %>
+    <div class="booktitle">タイトル：<%= book.book_name %></div>
+    <div class="d-grid gap-2 col-2 mx-auto">
+    <div class="btn status-btn-primary">未読<%= book.status %></div>
+    </div>
+    <div class="readtime">読書時間：<%= book.total_read_time %></div>
+    <div class="bookmemo">メモ：<%= book.memo %></div>
   <% end %>
 </ul>
 <%= paginate @books %>
