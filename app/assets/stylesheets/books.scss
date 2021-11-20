@@ -9,23 +9,68 @@ $mid_gray: #D1CFCF;
 $dark_gray: #8E8D8D;
 $navy: #25507C;
 
-.text-color{
-	color: #fff;
-	text-decoration: none;
-}
-
+//本を追加するボタン設定
 .btn-primary{
+	background: $deep_pink;
 	background-color: $deep_pink;
 	border: none;
 }
 
+.btn-primary:hover, .btn-primary:focus, 
+.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
+.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary, 
+.open > .dropdown-toggle.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary:focus, 
+.open > .dropdown-toggle.btn-primary.focus,
+.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
+	background: $deep_pink; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+	color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+.btn-primary:hover {
+	background-color:$pink;
+}
+
+.btn-primary:active {
+	background-color: $deep_pink;
+}
+
+//登録している本一覧設定
 .list-btn-primary{
 	background-color: $navy;
 	border: none;
 }
 
-.linebook{
+.list-btn-primary, .list-btn-primary:focus, 
+.list-btn-primary:active, .list-btn-primary:active:focus, .list-btn-primary:active:hover, .list-btn-primary:active.focus,
+.list-btn-primary.active, .list-btn-primary.active:focus, .list-btn-primary.active:hover, .list-btn-primary.active.focus,
+.open > .dropdown-toggle.list-btn-primary, 
+.open > .dropdown-toggle.list-btn-primary:hover,
+.open > .dropdown-toggle.list-btn-primary:focus, 
+.open > .dropdown-toggle.list-btn-primary.focus,
+.list-btn-primary.disabled:hover, .list-btn-primary[disabled]:hover, fieldset[disabled] .list-btn-primary:hover,
+.list-btn-primary.disabled:focus, .list-btn-primary[disabled]:focus, fieldset[disabled] .list-btn-primary:focus,
+.list-btn-primary.disabled.focus, .list-btn-primary[disabled].focus, fieldset[disabled] .list-btn-primary.focus {
+	background: $navy; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+	color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+.list-btn-primary:hover {
+	color: white;
+	background-color:$mid_gray;
+}
+
+.list-btn-primary:active {
+	background-color: $navy;
+}
+
+hr.linebook{
 	color: black;
-	height: 10px;
-	text-align: center;
+	height: 2px;
+	width: 60%;
+	margin: 5% auto;
+	border: none;
 }
