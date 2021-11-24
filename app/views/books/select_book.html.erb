@@ -1,15 +1,25 @@
 <div class="container">
   <p>現在読書中：『<%= @book.book_name %>』</p>
-<p>読書したい本を選んでください</p>
-<hr>
-  <% @books.each do |book| %>
-    <div class="row">
-    <%= form_with(model: @books, url: {controller: 'books', action: 'change_book' }) do |f| %>
-      <div class="d-flex">
-        <p><%= book.book_name %><%= f.hidden_field :status, value: "読書中" %></p>
-        <%= f.submit "これに変更する", class: "btn btn-pink" %>
-      </div>
-    <% end %>
-    </div>
+  <p>読書したい本を選んでください。
+  <br>
+  選択した書籍以外は「中断中」になります。</p>
+  <hr>
+  <%= form_with(model: @books, url: {controller: 'books', action: 'change_book' }) do |f| %>
+    <%= f.collection_select :status, @books, :読書中?, :book_name, {include_blank: "読書したい書籍を選択してください"} %>
+    <%= f.submit "変更する", class: "btn btn-pink" %>
   <% end %>
 </div>
+
+<!--
+メモ
+案①
+・formではIDを取得
+・controllerかmodel側でそのIDのstatusを変更する処理を記述する
+
+現在：
+Viewのformに誤りがあるため修正中
+formの中のvalueが”読書中”にできない
+radio_buttonやcollection_selectではvalue属性項目をviewから指定しずらい
+オリジナルでformを作成した方が無難か？
+配列でparamsを受け取る？
+-->
