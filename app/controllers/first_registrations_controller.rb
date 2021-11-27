@@ -18,7 +18,7 @@ class FirstRegistrationsController < ApplicationController
   def first_params
     params.require(:first_registration).permit(
       :name, :character_type, :level, :exp, :description, :photo, :user_id,
-      :book_name, :status
+      :book_name, :status, :memo
     )
   end
 end
