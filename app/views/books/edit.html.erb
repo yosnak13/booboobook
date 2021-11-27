@@ -12,13 +12,14 @@
       </div>
     <% end %>
 
-
+    <h1>書籍編集</h1>
+    <p>書籍名等が変更できます</p>
     <%= form_with(model: @book, url: user_book_path(current_user, @book), local: true) do |f| %>
-      <div class="form-group py-3 col-6 firstLine">
+      <div class="form-group py-3 col-md-10">
           <label class="col-form-label">書籍名</label>
           <%= f.text_field :book_name, class: "form-control" %>
       </div>
-      <div class="form-group py-3 col-3 firstLine">
+      <div class="form-group py-3 col-md-10">
         <label class="col-form-label">ステータス</label>
         <%= f.select :status, Book.statuses.keys.map {|k| [k, k]}, {include_blank: "選択して下さい"}, class: "form-control" %>
       </div>
@@ -32,6 +33,7 @@
         <%= link_to '戻る', user_book_path(current_user, @book), class: "btn btn-gray" %>
       </div>
     <% end %>
-    
+
   </div>
 </div>
+
