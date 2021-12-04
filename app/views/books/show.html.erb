@@ -1,9 +1,9 @@
 <div class="row justify-content-center mt-5">
-  <div class="row mx-auto">
-    <div class="col-6 text-break">
+  <div class="d-inline-flex">
+    <div class="text-break-bookTitle">
       <h4><%= @book.book_name %></h4>
     </div>
-    <div class="col-3">  <%# ステータスによってバッチの色を変更する %>
+    <div class="bd">  <%# ステータスによってバッチの色を変更する %>
       <% if @book.status == "未読" %>
         <span class="badge bg-gray">未読</span>
       <% elsif @book.status == "読書中" %>
@@ -12,7 +12,7 @@
         <span class="badge bg-navy">読了</span>
       <% end %>
     </div>
-    <div class="col-3">
+    <div class="readingTime">
       <p><%= @book.total_read_time_sec.utc.strftime('%R') %></p>
     </div>
   </div>
