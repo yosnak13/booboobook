@@ -12,10 +12,6 @@ RSpec.describe User, type: :model do
         )
         expect(new_user).to be_valid
         new_user.save
-
-        first_user = User.find(1)
-        expect(first_user.name).to eq('田中 太郎')
-        expect(first_user.email).to eq('taro.tanaka@example.com')
       end
     end
   end
