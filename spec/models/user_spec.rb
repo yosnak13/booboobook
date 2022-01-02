@@ -4,12 +4,7 @@ RSpec.describe User, type: :model do
   describe 'ユーザーサインアップ' do
     context '入力する' do
       it '入力値が正常なとき' do
-        new_user = User.new(
-          name: '田中 太郎',
-          email: 'taro.tanaka@example.com',
-          password: 'Adf567',
-          encrypted_password: 'Adf567'
-        )
+        new_user = FactoryBot.build(:test_user_tanaka)
         expect(new_user).to be_valid
         new_user.save
       end
