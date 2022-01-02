@@ -50,7 +50,7 @@ gem 'rails-i18n', '~> 5.1'
 
 gem 'carrierwave', '~> 2.0'
 
-gem 'rspec-rails'
+gem 'rspec-rails', '~> 4.0.0'
 
 gem 'factory_bot_rails'
 
