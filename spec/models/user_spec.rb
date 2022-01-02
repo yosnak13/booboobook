@@ -14,6 +14,11 @@ RSpec.describe User, type: :model do
         new_user = FactoryBot.create(:test_user_tanaka)
       end
 
+      it 'ユーザー名が正常でないとき' do
+        name_blank_user = FactoryBot.build(:test_user_tanaka, name: "" )
+        expect(name_blank_user).not_to be_valid
+      end
+
       it 'メールアドレスが正常でないとき' do
         error_new_user = FactoryBot.build(:test_user_tanaka, email: 'test.example.com')
         expect(error_new_user).not_to be_valid
