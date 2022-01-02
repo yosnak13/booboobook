@@ -17,4 +17,12 @@ RSpec.describe Book, type: :model do
       end
     end
   end
+
+  describe "書籍編集" do
+    it "編集するとき" do
+      edit_book = FactoryBot.build(:test_book)
+      edit_book.update(book_name: "Ruby on Rails その1", memo: "読書完了まであと少し")
+      expect(edit_book.save).to be_truthy
+    end
+  end
 end
