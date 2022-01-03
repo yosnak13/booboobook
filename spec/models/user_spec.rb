@@ -2,18 +2,17 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "ユーザーサインアップ" do
+    before do
+      @new_user = FactoryBot.create(:test_user_tanaka)
+    end
+
     context "入力値が正常なとき" do
       it "正しく登録できるとき" do
-        new_user = FactoryBot.create(:test_user_tanaka)
-        expect(new_user).to be_valid
+        expect(@new_user).to be_valid
       end
     end
 
     context "入力値が正常ではないとき" do
-      before do
-        new_user = FactoryBot.create(:test_user_tanaka)
-      end
-
       it "ユーザー名が正常でないとき" do
         name_blank_user = FactoryBot.build(:test_user_tanaka, name: "" )
         expect(name_blank_user).not_to be_valid
