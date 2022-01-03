@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe StudyTime, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "読書時間を登録するとき" do
+    it "正しく登録できるとき" do
+      
+    end
+  end
 end
