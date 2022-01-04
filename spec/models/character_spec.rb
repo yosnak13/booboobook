@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Character, type: :model do
   context "初回登録にてキャラクターを登録するとき" do
     before do
-      @character = FactoryBot.build(:character)
+      @character = build(:character)
       # @character.photo = fixture_file_upload("/images/TestLandrace.png")
     end
 
