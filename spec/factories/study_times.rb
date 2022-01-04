@@ -1,11 +1,7 @@
 FactoryBot.define do
   factory :study_time do
+    association :book, factory: :test_book
+    study_date { '2022-01-04 01:30:09' }
+    study_time { 30 }
   end
-
-  # factory :study_time, class: "study_time" do
-  #   association :book, factory: :test_book
-  #   user { book.user }
-  #   study_date { 30 }
-  #   study_time {  }
-  # end
 end
