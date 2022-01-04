@@ -2,8 +2,19 @@ require 'rails_helper'
 
 RSpec.describe StudyTime, type: :model do
   describe "読書時間を登録するとき" do
-    it "正しく登録できるとき" do
-      
+    before do
+      @study_time = FactoryBot.build(:study_time)
+    end
+
+    it "入力値が正しいとき" do
+      expect(@study_time).to be_valid
+      expect(@study_time.save).to be_truthy
+    end
+
+    it "入力値が誤りの場合" do
+      wrong_study_time = FactoryBot.build(:study_time, study_time: "")
+      expect(wrong_study_time).not_to be_valid
+      expect(wrong_study_time.save).to be_falsey
     end
   end
 end
