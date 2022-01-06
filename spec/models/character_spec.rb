@@ -21,6 +21,13 @@ RSpec.describe Character, type: :model do
       it "入力値が正しいとき" do
         @character.exp += 30
         expect(@character).to be_valid
+        expect(@character.save).to be_truthy
+      end
+
+      it "入力値が誤りのとき" do
+        @character.exp = nil
+        expect(@character).not_to be_valid
+        expect(@character.save).to be_falsey
       end
     end
   end
