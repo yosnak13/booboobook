@@ -53,7 +53,6 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "ログイン" do
-    # no method error [level] is nil class
     let(:user) { create(:test_user_tanaka) }
     let(:user_cahracter) { create(:character, user: user) }
 
