@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   let(:user) { create(:user) }
   let(:user_params) { attributes_for(:user) }
-  let(:invalid_user_params) { attributes_for(:user, name: "") }
+  let(:invalid_user_params) { attributes_for(:user, name: "" ) }
 
   describe "サインアップ" do
     before do
@@ -52,28 +52,38 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  # xdescribe "ログイン" do #処理を保留する
-  #   let(:user) { create(:user, :confirmed) }
+  describe "ログイン" do
+    # no method error [level] is nil class
+    let(:user) { create(:test_user_tanaka) }
+    let(:user_cahracter) { create(:character, user: user) }
 
-  #   context "ログインするとき" do
-  #     it 'ログイン後#indexへページ遷移すること' do
-  #       sign_in @user
-  #       get users_path
-  #       expect(response).to have_http_status(200)
-  #     end
+    context "認証したとき" do
+      before do
+        @pork = create(:pork)
+      end
 
-  #     it "ログインしないと#users/sign_upへリダイレクトすること" do
-  #       get users_path
-  #       expect(response).to redirect_to new_user_session_path
-  #     end
-  #   end
+      it '初回ログイン後#first_registrationsページ遷移すること' do
+        sign_in user
+        get first_registration_user_path(user)
+        expect(response).to have_http_status(200)
+      end
+    end
 
-  #    context "未認証のとき" do
-  #     let(:user) { create(:user) }
-  #     it "ログインできないとき" do
-  #       get users_path
-  #       expect(response).to redirect_to
-  #     end
-  #    end
-  # end
+    context "未認証のとき" do
+      it "認証しなければ#users/sign_upへリダイレクトすること" do
+        get users_path
+        expect(response).to redirect_to new_user_session_path
+      end
+
+      pending
+      let(:user) { create(:user) }
+      it "ログインできないとき" do
+        get users_path
+        expect(response).to redirect_to new_user_session_path
+        # expect(user.errors[email]).to include(I18n.t('ja.devise.failer.inactive'))
+        # user.valid?
+        # binding.pry
+      end
+    end
+  end
 end
