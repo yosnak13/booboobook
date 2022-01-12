@@ -73,11 +73,6 @@ RSpec.describe "Users", type: :request do
         get users_path
         expect(response).to redirect_to new_user_session_path
       end
-
-      it "ログインできないとき" do
-        get users_path
-        expect(response).to redirect_to new_user_session_path
-      end
     end
   end
 end
