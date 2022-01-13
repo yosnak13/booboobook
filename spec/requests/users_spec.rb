@@ -30,11 +30,12 @@ RSpec.describe "Users", type: :request do
       it '認証ページへリダイレクトされること' do
         post user_registration_path, params: { user: user_params }
         expect(response).to redirect_to verify_path
+        expect(response.status).to eq 302
       end
     end
 
     context '入力値が不正な場合' do
-      it 'リクエストが成功すること' do
+      it 'リクエストが失敗すること' do
         post user_registration_path, params: { user: invalid_user_params }
         expect(response.status).to eq 200
       end
@@ -72,6 +73,7 @@ RSpec.describe "Users", type: :request do
       it "認証しなければ#users/sign_upへリダイレクトすること" do
         get users_path
         expect(response).to redirect_to new_user_session_path
+        expect(response.status).to eq 302
       end
     end
   end
