@@ -10,9 +10,11 @@ RSpec.describe "StudyTimes", type: :request do
       let(:study_time_params) { attributes_for(:study_time) }
 
       it "投稿できるとき" do
+        get study_times_user_path(user)
         post study_times_user_path(user), params: { study_time_posting: study_time_params }
         follow_redirect!
-        # expect(flash[:notice]).to include("学習時間を記録しました！")
+        redirect_to users_path(user)
+        expect(flash[:notice]) == "学習時間を記録しました！"
       end
     end
   end
