@@ -3,12 +3,16 @@ require 'rails_helper'
 RSpec.describe "StudyTimes", type: :request do
   describe "学習時間を投稿するとき" do
     let(:user) { create(:user) }
-    let(:study_time) { create(:study_time)}
+    let(:book) { create(:test_book) }
 
     context "入力値が正しいとき" do
+      let(:study_time) { create(:study_time, book: book) }
+      let(:study_time_params) { attributes_for(:study_time) }
+
       it "投稿できるとき" do
-        post study_times_user_path(user), params:  study_time
-        expect(response).to have_http_status(200)
+        post study_times_user_path(user), params: { study_time_posting: study_time_params }
+        follow_redirect!
+        # expect(flash[:notice]).to include("学習時間を記録しました！")
       end
     end
   end
