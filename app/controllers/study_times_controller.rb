@@ -23,14 +23,14 @@ class StudyTimesController < ApplicationController
         levelSetting = LevelSetting.find_by(level: @character.level)
         break if levelSetting.needed_exp > @character.exp
       end
-      
+
       @character.update(level: @character.level)
       @character.save
 
-      flash.now[:notice] = "学習時間を記録しました！"
+      flash[:notice] = "学習時間を記録しました！"
       redirect_to users_path(current_user)
     else
-      flash.now[:danger] = "入力をやり直してください"
+      flash[:danger] = "入力をやり直してください"
       render :new
     end
   end

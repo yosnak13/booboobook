@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   with_options presence: true do
-    validates :name, format: {with: /\A[ぁ-んァ-ン一-龥]/}
+    validates :name
     validates :email
     validates :password
   end
