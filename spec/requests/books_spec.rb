@@ -15,10 +15,8 @@ RSpec.describe "Books", type: :request do
       end
 
       it "書籍の編集が成功すること" do
-        pending
-        #  ActionController::UrlGenerationError: No route matches {:action=>"edit", :controller=>"books"}, missing required keys: [:id, :user_id]
-        get edit_user_book_path
-        patch user_book_path(user), params: { new_book: FactoryBot.attributes_for(:test_book, name: "プログラミング上級") }
+        get edit_user_book_path(user, book)
+        patch user_book_path(user, book), params: { edit_book: book, memo: "3時間で読了" }
         follow_redirect!
         expect(response.status).to eq 200
       end
