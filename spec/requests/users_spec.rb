@@ -11,41 +11,41 @@ RSpec.describe "Users", type: :request do
     end
 
     context "入力値が正しいとき" do
-      it 'リクエストが成功すること' do
+      it "リクエストが成功すること" do
         post user_registration_path, params: { user: user_params }
         expect(response.status).to eq 302
       end
 
-      it '認証メールが送信されること' do
+      it "認証メールが送信されること" do
         post user_registration_path, params: { user: user_params }
         expect(ActionMailer::Base.deliveries.size).to eq 1
       end
 
-      it 'createが成功すること' do
+      it "createが成功すること" do
         expect do
           post user_registration_path, params: { user: user_params }
         end.to change(User, :count).by 1
       end
 
-      it '認証ページへリダイレクトされること' do
+      it "認証ページへリダイレクトされること" do
         post user_registration_path, params: { user: user_params }
         expect(response).to redirect_to verify_path
         expect(response.status).to eq 302
       end
     end
 
-    context '入力値が不正な場合' do
-      it 'リクエストが失敗すること' do
+    context "入力値が不正な場合" do
+      it "リクエストが失敗すること" do
         post user_registration_path, params: { user: invalid_user_params }
         expect(response.status).to eq 200
       end
 
-      it '認証メールが送信されないこと' do
+      it "認証メールが送信されないこと" do
         post user_registration_path, params: { user: invalid_user_params }
         expect(ActionMailer::Base.deliveries.size).to eq 0
       end
 
-      it 'createが失敗すること' do
+      it "createが失敗すること" do
         expect do
           post user_registration_path, params: { user: invalid_user_params }
         end.to_not change(User, :count)
@@ -62,7 +62,7 @@ RSpec.describe "Users", type: :request do
         @pork = create(:pork)
       end
 
-      it '初回ログイン後#first_registrationsページ遷移すること' do
+      it "初回ログイン後#first_registrationsページ遷移すること" do
         sign_in user
         get first_registration_user_path(user)
         expect(response).to have_http_status(200)
