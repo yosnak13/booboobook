@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_current_user
+  before_action :find_book, only: [:show, :edit, :destroy]
 
   def index
     # 10ページごとにページネーション
@@ -8,8 +8,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
-    @user = @book.user
+    @book = current_user.books.find(params[:id])
   end
 
   def new
@@ -27,14 +26,9 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
-    if current_user.id != @book.user_id
-      redirect_to user_books_path
-    end
   end
 
   def update
-    @book = Book.find(params[:id])
     if @book.update(book_params)
       flash[:notice] = "書籍変更が完了しました"
       redirect_to user_book_path(@book)
@@ -44,9 +38,13 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
-    redirect_to user_books_path
+    if @book.status == "読書中"
+      flash[:notice] = "読書中の書籍は削除できません"
+      render :show
+    else
+      @book.destroy
+      redirect_to user_books_path
+    end
   end
 
   def select_book
@@ -78,8 +76,8 @@ class BooksController < ApplicationController
     params.require(:book).permit(:book_name, :status, :memo)
   end
 
-  def find_current_user
-    @user = current_user
+  def find_book
+    @book = Book.find(params[:id])
   end
 
   def change_book_status_params
