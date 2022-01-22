@@ -18,10 +18,15 @@ RSpec.describe "Books", type: :request do
         get edit_user_book_path(user, book)
         patch user_book_path(user, book), params: { edit_book: book, memo: "3時間で読了" }
         follow_redirect!
+        expect(flash[:notice]) == "書籍変更が完了しました"
         expect(response.status).to eq 200
       end
 
       it "書籍の削除が成功すること" do
+        get user_book_path(user, book)
+        delete user_book_path(user, book)
+        follow_redirect!
+        expect(response.status).to eq 200
       end
     end
   end
