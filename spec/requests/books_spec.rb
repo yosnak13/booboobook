@@ -49,4 +49,15 @@ RSpec.describe "Books", type: :request do
       end
     end
   end
+
+  describe "読書ステータスの変更" do
+    let(:invalid_delete_book) { create(:user_is_reading_book) }
+
+    it "status:読書中の書籍が削除できないこと" do
+      get user_book_path(user, invalid_delete_book)
+      delete user_book_path(user, invalid_delete_book)
+      redirect_to user_book_path(user, invalid_delete_book)
+      expect(flash[:notice]) == "読書中の書籍は削除できません"
+    end
+  end
 end
