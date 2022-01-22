@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_book, only: [:show, :edit, :destroy]
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
+  before_action :sssss, only: [:select_book]
+  after_action :xxxxx, only: [:change_book]
 
   def index
     # 10ページごとにページネーション
