@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :user
   has_many :study_time, dependent: :destroy
+  
   validates :book_name, presence: true
   validates :status, presence: true
 
