@@ -13,12 +13,11 @@ class StudyTimesController < ApplicationController
     study_time = book.study_times_new
     study_time.save_study_time(study_time, study_time_params)
     # bookのtotal_read_timeに学習時間を追記する
-
+    book.increment_study_time_to_book(book, study_time_params)
     # characterのexpに学習時間を加算
 
     # レベルアップメソッド
-    # 仮のリダイレクト
-    # binding.pry
+
     flash[:notice] = "学習時間を記録しました！"
     redirect_to users_path(current_user)
 
