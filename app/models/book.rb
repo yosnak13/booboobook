@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :user
-  has_many :study_time, dependent: :destroy
-  
+  has_many :study_times, dependent: :destroy
+
   validates :book_name, presence: true
   validates :status, presence: true
 
@@ -10,5 +10,15 @@ class Book < ApplicationRecord
   def total_read_time_sec #秒数換算してTimeオブジェクトを返すメソッド
     self.total_read_time *= 60
     self.total_read_time = Time.at(self.total_read_time)
+  end
+
+  def study_times_new
+    study_times.new
+  end
+
+  def increment_study_time_to_book(book, study_time_params)
+    posted_read_time = study_time_params.values[1].to_i
+    book.increment(:total_read_time, posted_read_time )
+    book.save
   end
 end
