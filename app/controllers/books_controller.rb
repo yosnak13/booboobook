@@ -1,4 +1,10 @@
+require 'net/http'
+require 'uri'
+require 'json'
+require 'httparty'
+
 class BooksController < ApplicationController
+  include BooksApi
   before_action :authenticate_user!
   before_action :find_book, only: [:show, :edit, :update, :destroy]
   before_action :check_book_flag, only: [:select_book]
@@ -14,7 +20,18 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    @results = []
+    if @results.present?
+      @book = Book.new
+    else
+      @book = Book.new
+      @results = url_from_keyword
+    end
+  end
+
+  def url_from_keyword
+    keyword = params[:keyword]
+    BooksApi.get_url(keyword)
   end
 
   def create
