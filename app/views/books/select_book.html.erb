@@ -1,27 +1,27 @@
 <div class="container">
-  <p>現在読書中：『<%= @book.book_name %>』</p>
+  <p>book_id：<%= @current_book.id %></p>
+  <p>現在読書中：『<%= @current_book.book_name %>』</p>
   <p>読書したい本を選んでください。
   <br>
-  選択した書籍以外は「中断中」になります。</p>
+  ※選択した書籍以外のステータスは「中断中」になります。</p>
   <hr>
 
-  <% @books.each do |book|%>
-    <%= tag.div book.book_name, id: book.id %>
-  <% end %>
+  <div class="row">
+    <% @other_books.each do |book|%>
+      <%= link_to book.book_name, user_book_path(current_user, @books), id: book.id, controller: :books, action: "update",method: :update %>
+      <%#リダイレクト先がstudy_times#createになってしまっている%>
+    <% end %>
+  </div>
 
-  <%= form_with(model: @books, url: {controller: 'books', action: 'change_book' }) do |f| %>
-    <%= f.hidden_field :status, value: '' %>
-    <%= f.submit "変更する", class: "btn btn-pink" %>
-  <% end %>
 </div>
 <script>
 $(".book_name").click(function() {
-    $(this).css("filter", "opacity(100%)");
-    $(".book_name").not(this).css("filter", "opacity(20%)");
-    //クリックしたアイコンのidをcongestion_levelのvalueにする
-    var selected_book = $(this).attr("id");
-    document.querySelector("#value").value = selected_book;
-  });
+  $(this).css("filter", "opacity(100%)");
+  $(".book_name").not(this).css("filter", "opacity(20%)");
+  //クリックしたアイコンのidをstatusのvalueにする
+  const clicked_book = $(this).attr("id");
+  const book_value = document.querySelector("clicked_book");
+});
 </script>
 
 <!--
