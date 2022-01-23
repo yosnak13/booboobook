@@ -10,22 +10,20 @@ class StudyTimesController < ApplicationController
 
   def create
     book = current_user.books.find_by(status: "読書中")
+    character = @character
+
     study_time = book.study_times_new
     study_time.save_study_time(study_time, study_time_params)
     # bookのtotal_read_timeに学習時間を追記する
     book.increment_study_time_to_book(book, study_time_params)
     # characterのexpに学習時間を加算
-
+    character.increment_study_time_to_character_exp(character, study_time_params)
     # レベルアップメソッド
 
     flash[:notice] = "学習時間を記録しました！"
     redirect_to users_path(current_user)
 
     # if study_time.save
-    #   book.increment(:total_read_time, study_time.study_time)
-    #   book.save
-
-    #   @character.increment(:exp, @study_time.study_time)
     #   levelSetting = LevelSetting.find_by(level: @character.level)
     #   @character.level += 1 if @character.exp >= levelSetting.needed_exp
 
