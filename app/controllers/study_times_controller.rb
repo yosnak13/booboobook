@@ -18,7 +18,7 @@ class StudyTimesController < ApplicationController
     book.increment_study_time_to_book(book, study_time_params)
     character.increment_study_time_to_character_exp(character, study_time_params)
 
-    character.level_up(character, study_time_params) if character.level < 60
+    character.level_up(character) if character.level < 60
 
     flash[:notice] = "学習時間を記録しました！"
     redirect_to users_path(current_user)
