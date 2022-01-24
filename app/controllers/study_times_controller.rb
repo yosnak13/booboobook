@@ -9,19 +9,20 @@ class StudyTimesController < ApplicationController
   end
 
   def create
-    book = current_user.books.find_by(status: "読書中")
+    book = @book
     character = @character
-
     study_time = book.study_times_new
     study_time.save_study_time(study_time, study_time_params)
-
-    book.increment_study_time_to_book(book, study_time_params)
-    character.increment_study_time_to_character_exp(character, study_time_params)
-
-    character.level_up(character) if character.level < 60
-
-    flash[:notice] = "学習時間を記録しました！"
-    redirect_to users_path(current_user)
+    if study_time.present?
+      book.increment_total_read_time(book, study_time_params)
+      character.increment_character_exp(character, study_time_params)
+      character.level_up(character) if character.level < 60
+      flash[:notice] = "学習時間を記録しました！"
+      redirect_to users_path(current_user)
+    else
+      flash[:notice] = "入力内容に誤りがあります。"
+      redirect_to  study_times_user_path(current_user)
+    end
   end
 
   private
