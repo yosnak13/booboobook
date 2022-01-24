@@ -16,7 +16,7 @@ class Character < ApplicationRecord
     character.save
   end
 
-  def level_up(character, study_time_params)
+  def level_up(character)
     levelSetting = LevelSetting.find_by(level: character.level)
     character.level += 1 if character.exp >= levelSetting.needed_exp
     while (levelSetting.needed_exp <= character.exp) do
