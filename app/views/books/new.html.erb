@@ -25,11 +25,10 @@
       <% end %>
     </div>
 
+    <%# 書籍検索の結果をAjaxで表示 %>
     <div id="render-results"></div>
 
-
-
-
+    <%# 書籍の手動登録 %>
     <%= form_with(model: @book, url: user_books_path, local: true) do |f| %>
       <div class="form-group py-3 mx-auto">
         <label class="col-form-label">書籍名</label>
