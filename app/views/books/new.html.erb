@@ -14,6 +14,22 @@
 
     <h1>書籍登録</h1>
     <p>書籍名を入力してください</p>
+
+    <%# 書籍検索 %>
+    <div class="input-group mb-3">
+      <%= form_with(url: new_user_book_path, method: :get) do |f| %>
+        <%= f.search_field :keyword, placeholder: "タイトル検索", class: "form-control" %>
+        <button class="btn btn-navy" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      <% end %>
+    </div>
+
+    <div id="render-results"></div>
+
+
+
+
     <%= form_with(model: @book, url: user_books_path, local: true) do |f| %>
       <div class="form-group py-3 mx-auto">
         <label class="col-form-label">書籍名</label>
