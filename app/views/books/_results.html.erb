@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <% for i in 0..19 do %>
-        <div class="result-box">
+        <div class="result-box my-3">
           <% if results["items"][i]["volumeInfo"]["imageLinks"].nil? %>
             <%= image_tag("no_image.png", size: "120x100") %>
           <% else %>
