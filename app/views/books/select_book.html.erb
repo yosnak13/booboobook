@@ -6,7 +6,7 @@
   <hr>
 
   <% @books.each do |book|%>
-    <%= tag.div book.book_name, id: book.id %>
+    <%= tag.div book.book_name, id: book.id, class: "book_name" %>
   <% end %>
 
   <%= form_with(model: @books, url: {controller: 'books', action: 'change_book' }) do |f| %>
