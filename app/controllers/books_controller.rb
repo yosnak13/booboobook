@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :find_book, only: [:show, :edit, :update, :destroy]
-  before_action :sssss, only: [:select_book]
-  after_action :xxxxx, only: [:change_book]
+  before_action :check_book_flag, only: [:select_book]
+  # after_action :xxxxx, only: [:change_book]
 
   def index
     # 10ページごとにページネーション
@@ -50,8 +50,6 @@ class BooksController < ApplicationController
   end
 
   def select_book
-    @book = current_user.books.find_by(status: 1)
-    @books = current_user.books.where(status: 0).or(current_user.books.where(status: 2))
   end
 
   def change_book
@@ -80,6 +78,12 @@ class BooksController < ApplicationController
 
   def find_book
     @book = Book.find(params[:id])
+  end
+
+  def check_book_flag
+    @book = current_user.books.find_by(status: 1)
+    @books = current_user.books.where(status: 0).
+      or(current_user.books.where(status: 2))
   end
 
   def change_book_status_params
