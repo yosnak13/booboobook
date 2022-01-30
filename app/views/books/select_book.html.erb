@@ -4,11 +4,25 @@
   <br>
   選択した書籍以外は「中断中」になります。</p>
   <hr>
+
+  <% @books.each do |book|%>
+    <%= tag.div book.book_name, id: book.id %>
+  <% end %>
+
   <%= form_with(model: @books, url: {controller: 'books', action: 'change_book' }) do |f| %>
-    <%= f.collection_select :status, @books, :読書中?, :book_name, {include_blank: "読書したい書籍を選択してください"} %>
+    <%= f.hidden_field :status, value: '' %>
     <%= f.submit "変更する", class: "btn btn-pink" %>
   <% end %>
 </div>
+<script>
+$(".book_name").click(function() {
+    $(this).css("filter", "opacity(100%)");
+    $(".book_name").not(this).css("filter", "opacity(20%)");
+    //クリックしたアイコンのidをcongestion_levelのvalueにする
+    var selected_book = $(this).attr("id");
+    document.querySelector("#value").value = selected_book;
+  });
+</script>
 
 <!--
 メモ
@@ -22,4 +36,11 @@ formの中のvalueが”読書中”にできない
 radio_buttonやcollection_selectではvalue属性項目をviewから指定しずらい
 オリジナルでformを作成した方が無難か？
 配列でparamsを受け取る？
+
+おそらくhidden_fieldのvalueを、クリックした要素のid(value)を
+付与してpatchする処理が良いかと思われる。
+- eachで全ての書籍を表示させる（ページネーション必要かも）
+- クリックした要素のidをvalueとしてhidden_fieldに渡すJSを描く
+- patchリクエストした書籍を「読書中」に変更するメソッド
+- かつて「読書中」だった書籍は「中断中」に変更するメソッド
 -->
