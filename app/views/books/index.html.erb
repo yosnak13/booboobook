@@ -13,7 +13,7 @@
         <div class="row">
           <div class="col-3">
             <%= link_to user_book_path(current_user, book) do %>
-                  <i class="fas fa-book fa-6x"></i>
+                  <i class="fas fa-book icon-size"></i>
             <% end %>
           </div>
           <div class="col-9">
@@ -32,7 +32,7 @@
                 <p><%= book.total_read_time_sec.utc.strftime('%R') %></p>
               </div>
               <br>
-              <div class="col-8 text-break">
+              <div class="col-12 text-break">
                 <h4><%= book.book_name %></h4>
               </div>
             </div>

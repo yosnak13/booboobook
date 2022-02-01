@@ -124,3 +124,12 @@ hr.linebook {
 .row {
 	margin: 0 auto;
 }
+
+//bookアイコンのサイズ
+.icon-size{
+	font-size: 6em;
+	@media (max-width: 767px) {
+	//767px画面サイズが小さくなったとき、下記の大きさにしますよ
+	font-size: 3em;
+	}
+}
