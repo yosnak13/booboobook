@@ -76,28 +76,28 @@ fieldset[disabled] .btn-primary.focus {
 	border: none;
 }
 
-// .list-btn-primary, .list-btn-primary:focus,
-// .list-btn-primary:active, .list-btn-primary:active:focus, .list-btn-primary:active:hover, .list-btn-primary:active.focus,
-// .list-btn-primary.active, .list-btn-primary.active:focus, .list-btn-primary.active:hover, .list-btn-primary.active.focus,
-// .open > .dropdown-toggle.list-btn-primary,
-// .open > .dropdown-toggle.list-btn-primary:hover,
-// .open > .dropdown-toggle.list-btn-primary:focus,
-// .open > .dropdown-toggle.list-btn-primary.focus,
-// .list-btn-primary.disabled:hover, .list-btn-primary[disabled]:hover, fieldset[disabled] .list-btn-primary:hover,
-// .list-btn-primary.disabled:focus, .list-btn-primary[disabled]:focus, fieldset[disabled] .list-btn-primary:focus,
-// .list-btn-primary.disabled.focus, .list-btn-primary[disabled].focus, fieldset[disabled] .list-btn-primary.focus {
-// 	background: $navy; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
-// 	color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
-// }
+.list-btn-primary, .list-btn-primary:focus,
+.list-btn-primary:active, .list-btn-primary:active:focus, .list-btn-primary:active:hover, .list-btn-primary:active.focus,
+.list-btn-primary.active, .list-btn-primary.active:focus, .list-btn-primary.active:hover, .list-btn-primary.active.focus,
+.open > .dropdown-toggle.list-btn-primary,
+.open > .dropdown-toggle.list-btn-primary:hover,
+.open > .dropdown-toggle.list-btn-primary:focus,
+.open > .dropdown-toggle.list-btn-primary.focus,
+.list-btn-primary.disabled:hover, .list-btn-primary[disabled]:hover, fieldset[disabled] .list-btn-primary:hover,
+.list-btn-primary.disabled:focus, .list-btn-primary[disabled]:focus, fieldset[disabled] .list-btn-primary:focus,
+.list-btn-primary.disabled.focus, .list-btn-primary[disabled].focus, fieldset[disabled] .list-btn-primary.focus {
+	background: $navy; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+	color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
 
 .list-btn-primary:hover {
 	color: white;
-	// background-color:$mid_gray;
+	background-color:$mid_gray;
 }
 
-// .list-btn-primary:active {
-// 	background-color: $navy;
-// }
+.list-btn-primary:active {
+	background-color: $navy;
+}
 
 //ライン
 hr.linebook {
@@ -111,6 +111,7 @@ hr.linebook {
 //本のmemo
 .memobox {
 	box-sizing: border-box;
+	border-radius: 4px;
 	width: 100%;
 	max-width: 380px;
 	height: 100%;
@@ -131,5 +132,24 @@ hr.linebook {
 	@media (max-width: 767px) {
 	//767px画面サイズが小さくなったとき、下記の大きさにしますよ
 	font-size: 3em;
+	}
+}
+
+//メモ内のフォントのサイズ
+.textmemo{
+	margin: 6px;
+	font-size: 18px;
+	@media (max-width: 767px) {
+	//767px画面サイズが小さくなったとき、下記の大きさにしますよ
+	font-size: 14px;
+	}
+}
+
+//h4のフォントサイズ
+.booktitle{
+	font-size: 20px;
+	@media (max-width: 767px) {
+	//767px画面サイズが小さくなったとき、下記の大きさにしますよ
+	font-size: 16px;
 	}
 }
