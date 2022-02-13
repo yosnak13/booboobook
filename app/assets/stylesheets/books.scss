@@ -90,11 +90,13 @@ fieldset[disabled] .btn-primary.focus {
 	color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
 }
 
+//ホバーしたときの色
 .list-btn-primary:hover {
 	color: white;
 	background-color:$mid_gray;
 }
 
+//登録している本一覧の文字設定
 .list-btn-primary:active {
 	background-color: $navy;
 }
