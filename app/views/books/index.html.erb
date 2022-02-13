@@ -5,7 +5,7 @@
       <%= link_to '本を登録する', new_user_book_path, class: "btn btn-pink" %>
     </div>
     <div class="py-1 mb-2 d-grid gap-1 col-6 mx-auto">
-    <h1 class="btn list-btn-primary">登録している本一覧</h1>
+      <%= link_to '登録している本一覧', "#", class: "btn list-btn-primary" %>
     </div>
     <hr class="linebook">
     <div class="row justify-content-md-center">
@@ -13,12 +13,11 @@
         <div class="row">
           <div class="col-3">
             <%= link_to user_book_path(current_user, book) do %>
-                  <i class="fas fa-book icon-size"></i>
+              <i class="fas fa-book icon-size"></i>
             <% end %>
           </div>
           <div class="col-9">
             <div class="row">
-
               <div class="col-3">  <%# ステータスによってバッチの色を変更する %>
                 <% if book.status == "未読" %>
                   <span class="badge bg-gray">未読</span>
@@ -54,9 +53,7 @@
     <%# ページネーション %>
     <div class="pagination justify-content-center">
       <%= paginate @books %>
-          <nav aria-label="Page navigation example">
-
-</nav>
+        <nav aria-label="Page navigation example"></nav>
     </div>
   </div>
 </div>
