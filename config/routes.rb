@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    root :to => "users#top"
+    root :to => "users#index"
     get "signup", to: "users/registrations#new"
     get "verify", to: "users/registrations#verify"
     get "login", to: "users/sessions#new"
@@ -29,13 +29,13 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:new, :create] do
-    member do
-      get "first_registration", to: "first_registrations#new"
-      post "first_registration", to: "first_registrations#create"
-      get "help", to: "users#help"
-      get "study_times", to: "study_times#new"
-      post "study_times", to: "study_times#create"
-    end
+    get "first_registration", to: "first_registrations#new"
+    post "first_registration", to: "first_registrations#create"
+    get "help", to: "users#help"
+    get "study_times", to: "study_times#new"
+    post "study_times", to: "study_times#create"
+    get "select_book", to: "books#select_book"
+    post "select_book", to: "books#change_book"
     resources :characters
     resources :books
   end

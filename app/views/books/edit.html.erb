@@ -16,8 +16,8 @@
     <p>書籍名等が変更できます</p>
     <%= form_with(model: @book, url: user_book_path(current_user, @book), local: true) do |f| %>
       <div class="form-group py-3 col-md-10">
-          <label class="col-form-label">書籍名</label>
-          <%= f.text_field :book_name, class: "form-control" %>
+        <label class="col-form-label">書籍名</label>
+        <%= f.text_field :book_name, class: "form-control" %>
       </div>
       <div class="form-group py-3 col-md-10">
         <label class="col-form-label">ステータス</label>
@@ -36,4 +36,3 @@
 
   </div>
 </div>
-

@@ -9,8 +9,8 @@ RSpec.describe "StudyTimes", type: :request do
 
     context "入力値が正しいとき" do
       it "投稿できるとき" do
-        get study_times_user_path(user)
-        post study_times_user_path(user), params: { study_time_posting: study_time_params }
+        get user_study_times_path(user)
+        post user_study_times_path(user), params: { study_time_posting: study_time_params }
         follow_redirect!
         expect(flash[:notice]) == "学習時間を記録しました！"
         expect(response.status).to eq 200
@@ -22,17 +22,17 @@ RSpec.describe "StudyTimes", type: :request do
       let(:invalid_study_date_params) { attributes_for(:study_time, study_date: "") }
 
       it "学習時間がnilで投稿できないとき" do
-        get study_times_user_path(user)
-        post study_times_user_path(user), params: { study_time_posting: invalid_study_time_params }
-        redirect_to study_times_user_path(user)
+        get user_study_times_path(user)
+        post user_study_times_path(user), params: { study_time_posting: invalid_study_time_params }
+        redirect_to user_study_times_path(user)
         expect(flash[:danger]) == "入力をやり直してください"
         expect(response.status).to eq 302
       end
 
       it "学習日時がnilで投稿できないとき" do
-        get study_times_user_path(user)
-        post study_times_user_path(user), params: { study_time_posting: invalid_study_date_params }
-        redirect_to study_times_user_path(user)
+        get user_study_times_path(user)
+        post user_study_times_path(user), params: { study_time_posting: invalid_study_date_params }
+        redirect_to user_study_times_path(user)
         expect(flash[:danger]) == "入力をやり直してください"
         expect(response.status).to eq 302
       end
