@@ -21,4 +21,9 @@ class Book < ApplicationRecord
     book.increment(:total_read_time, posted_read_time )
     book.save
   end
+
+  def update_all_status(others)
+    others.update_all(:status, 2)
+    others.save
+  end
 end
