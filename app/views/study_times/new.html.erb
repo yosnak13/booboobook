@@ -13,7 +13,7 @@
 
 <hr>
 
-<%= form_with(model: @study_time, url: {controller: 'study_times', action: 'create' }) do |f| %>
+<%= form_with(model: @study_time, url: {controller: 'study_times', action: 'create', local: true }) do |f| %>
 <div class="row">
   <div>
     <%= f.datetime_field :study_date, selected: Date.today %>日
