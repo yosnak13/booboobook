@@ -23,10 +23,10 @@
                   <% end %>
               </li>
               <li class="nav-item dropdown">
-                <%= link_to "読書する", study_times_user_path(current_user), class: "nav-link" %>
+                <%= link_to "読書する", user_study_times_path(current_user), class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
-                <%= link_to "ヘルプ", help_user_path(current_user), class: "nav-link" %>
+                <%= link_to "ヘルプ", user_help_path(current_user), class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
                 <%= link_to "ログアウト", "#", class: "nav-link", action: logout_path,

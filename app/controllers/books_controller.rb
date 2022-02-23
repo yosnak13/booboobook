@@ -74,10 +74,10 @@ class BooksController < ApplicationController
     if @sample.update(change_book_status_params)
       flash[:notice] = "読書したい書籍が変更されました"
       @others.update_all_status(others)
-      redirect_to study_times_user_path
+      redirect_to user_study_times_path
     else
       flash[:notice] = "書籍が変更できませんでした"
-      redirect_to study_times_user_path
+      redirect_to user_study_times_path
     end
   end
 

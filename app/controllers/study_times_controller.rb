@@ -1,9 +1,8 @@
 class StudyTimesController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_character
+  before_action :current_character_and_book
 
   def new
-    @book = current_user.books.find_by(status: "読書中")
     @study_times = @book.study_times
     @study_time = @study_times.new
   end
@@ -21,14 +20,15 @@ class StudyTimesController < ApplicationController
       redirect_to users_path(current_user)
     else
       flash[:notice] = "入力内容に誤りがあります。"
-      redirect_to  study_times_user_path(current_user)
+      redirect_to  user_study_times_path(current_user)
     end
   end
 
   private
 
-  def current_character
+  def current_character_and_book
     @character = current_user.characters.find_by(user_id: current_user.id)
+    @book = current_user.books.find_by(status: 1)
   end
 
   def study_time_params
