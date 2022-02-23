@@ -1,7 +1,7 @@
 <div>
   <p>読書中の書籍：
     <%= @book.book_name %>
-    <%= link_to "（変更する）", user_select_book_path %>
+    <%= link_to "（変更する）", user_books_path %>
   </p>
   <p>この書籍の累計読書時間：<%= @book.total_read_time %>分</p>
 </div>
