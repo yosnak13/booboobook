@@ -6,16 +6,12 @@
   ※選択した書籍以外のステータスは「中断中」になります。</p>
   <hr>
 
-  <%= form_with(model: @other_books, url: {controller: 'books', action: 'change_book', local: true }) do |f| %>
+  <div class="row">
     <% @other_books.each do |book|%>
-      <%= tag.div book.book_name, id: book.id %>
-      <%= f.hidden_field :status, value: "読書中" %>
-      <%= f.submit "変更する", class: "btn btn-pink" %>
+      <%= link_to book.book_name, study_times_user_path, id: book.id, controller: "books", method: :change_book %>
+      <%#リダイレクト先がstudy_times#createになってしまっている%>
     <% end %>
-  <% end %>
-
-  
-
+  </div>
 
 </div>
 <script>

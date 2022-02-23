@@ -69,6 +69,7 @@ class BooksController < ApplicationController
   end
 
   def change_book
+    binding.pry
     @sample = Book.find(params[:id])
     others = current_user.books.where(status: 0).or(current_user.books.where(status: 2))
     if @sample.update(change_book_status_params)
