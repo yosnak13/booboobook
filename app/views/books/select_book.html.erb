@@ -8,7 +8,7 @@
 
   <div class="row">
     <% @other_books.each do |book|%>
-      <%= link_to book.book_name, study_times_user_path, id: book.id, controller: "books", method: :change_book %>
+      <%= link_to book.book_name, user_book_path(current_user, @books), id: book.id, controller: :books, action: "update",method: :update %>
       <%#リダイレクト先がstudy_times#createになってしまっている%>
     <% end %>
   </div>

@@ -8,6 +8,8 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :find_book, only: [:show, :edit, :update, :destroy]
   before_action :check_book_flag, only: [:select_book, :change_book]
+  before_action :controll_status_1, only: :update
+  after_action :update_status_into_2,  only: :update
 
   def index
     # 10ページごとにページネーション
@@ -101,5 +103,16 @@ class BooksController < ApplicationController
 
   def change_book_status_params
     params.require(:book).permit(:status)
+  end
+
+  def controll_status_1
+    @last_status_1 = current_user.books.find_by(status: 1)
+  end
+
+  def update_status_into_2
+    if @last_status_1.status == book_params[:status]
+      @last_status_1.update(status: 2)
+      @last_status_1.save
+    end
   end
 end
