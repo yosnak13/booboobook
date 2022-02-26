@@ -106,7 +106,11 @@ class BooksController < ApplicationController
   end
 
   def controll_status_1
-    @last_status_1 = current_user.books.find_by(status: 1)
+    if current_user.books.find_by(status: 1).present?
+      @last_status_1 = current_user.books.find_by(status: 1)
+    else
+      @last_status_1 = current_user.books.last
+    end
   end
 
   def update_status_into_2
