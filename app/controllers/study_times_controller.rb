@@ -1,51 +1,42 @@
 class StudyTimesController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_book
-  before_action :current_character
+  before_action :current_character_and_book
 
   def new
-    @study_time = @book.study_time.new
+    @study_times = @book.study_times
+    @study_time = @study_times.new
   end
 
   def create
-    @study_time = @book.study_time.create(study_times_params)
-    if @study_time.save
-      @book.increment(:total_read_time, @study_time.study_time)
-      @book.save
-
-      @character.increment(:exp, @study_time.study_time)
-      levelSetting = LevelSetting.find_by(level: @character.level)
-      @character.level += 1 if @character.exp >= levelSetting.needed_exp
-
-      while (levelSetting.needed_exp <= @character.exp) do
-        levelSetting = LevelSetting.find_by(level: @character.level)
-        @character.level += 1 if @character.exp >= levelSetting.needed_exp
-        levelSetting = LevelSetting.find_by(level: @character.level)
-        break if levelSetting.needed_exp > @character.exp
-      end
-
-      @character.update(level: @character.level)
-      @character.save
-
+    book = @book
+    character = @character
+    study_time = book.study_times_new
+    study_time.save_study_time(study_time, study_time_params)
+    if study_time.present?
+      book.increment_total_read_time(book, study_time_params)
+      character.increment_character_exp(character, study_time_params)
+      character.level_up(character) if character.level < 60
       flash[:notice] = "学習時間を記録しました！"
       redirect_to users_path(current_user)
     else
-      flash[:danger] = "入力をやり直してください"
-      render :new
+      flash[:notice] = "入力内容に誤りがあります。"
+      redirect_to  user_study_times_path(current_user)
     end
   end
 
   private
 
-  def current_book
-    @book = current_user.books.find_by(user_id: current_user.id)
-  end
-
-  def current_character
+  def current_character_and_book
     @character = current_user.characters.find_by(user_id: current_user.id)
+    @book = current_user.books.find_by(status: 1)
+    if @book == nil
+      redirect_to user_books_path(current_user)
+      flash[:notice] = "読書したい書籍のステータスを「読書中」に設定してください。\
+      読書中の書籍がなければ学習時間を記録できません。"
+    end
   end
 
-  def study_times_params
+  def study_time_params
     params.require(:study_time).permit(:study_date, :study_time, :book_id)
   end
 end
