@@ -107,6 +107,12 @@ hr.linebook {
 	}
 }
 
+.read-time {
+	@media (max-width: 767px) {
+		text-align: right
+	}
+}
+
 //h4のフォントサイズ
 .booktitle{
 	font-size: 20px;
