@@ -66,6 +66,9 @@ hr.linebook {
 	width: 60%;
 	margin: 5% auto;
 	border: none;
+	@media (max-width: 767px) {
+		width: auto;
+	}
 }
 
 //本のmemo
