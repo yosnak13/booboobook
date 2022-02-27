@@ -34,8 +34,6 @@ Rails.application.routes.draw do
     get "help", to: "users#help"
     get "study_times", to: "study_times#new"
     post "study_times", to: "study_times#create"
-    get "select_book", to: "books#select_book"
-    post "select_book", to: "books#change_book"
     resources :characters
     resources :books
   end

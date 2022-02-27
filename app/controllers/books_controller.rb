@@ -72,23 +72,6 @@ class BooksController < ApplicationController
     BooksApi.get_url(keyword)
   end
 
-  def select_book
-  end
-
-  def change_book
-    binding.pry
-    @sample = Book.find(params[:id])
-    others = current_user.books.where(status: 0).or(current_user.books.where(status: 2))
-    if @sample.update(change_book_status_params)
-      flash[:notice] = "読書したい書籍が変更されました"
-      @others.update_all_status(others)
-      redirect_to user_study_times_path
-    else
-      flash[:notice] = "書籍が変更できませんでした"
-      redirect_to user_study_times_path
-    end
-  end
-
   private
 
   def book_params
