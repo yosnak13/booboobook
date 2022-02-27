@@ -30,6 +30,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def url_from_keyword
+    keyword = params[:keyword]
+    BooksApi.get_url(keyword)
+  end
+
   def create
     @book = current_user.books.build(book_params)
     if @book.save
