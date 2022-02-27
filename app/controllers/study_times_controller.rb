@@ -28,12 +28,11 @@ class StudyTimesController < ApplicationController
 
   def current_character_and_book
     @character = current_user.characters.find_by(user_id: current_user.id)
+    @book = current_user.books.find_by(status: 1)
     if @book == nil
       redirect_to user_books_path(current_user)
       flash[:notice] = "読書したい書籍のステータスを「読書中」に設定してください。\
       読書中の書籍がなければ学習時間を記録できません。"
-    else
-      @book = current_user.books.find_by(status: 1)
     end
   end
 
