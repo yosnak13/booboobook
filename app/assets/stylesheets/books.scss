@@ -32,34 +32,6 @@ $navy: #25507c;
 	border: none;
 }
 
-//ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色とテキストの色
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary:active:focus,
-.btn-primary:active:hover,
-.btn-primary:active.focus,
-.btn-primary.active,
-.btn-primary.active:focus,
-.btn-primary.active:hover,
-.btn-primary.active.focus,
-.open > .dropdown-toggle.btn-primary,
-.open > .dropdown-toggle.btn-primary:hover,
-.open > .dropdown-toggle.btn-primary:focus,
-.open > .dropdown-toggle.btn-primary.focus,
-.btn-primary.disabled:hover,
-.btn-primary[disabled]:hover,
-fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus,
-.btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled.focus,
-.btn-primary[disabled].focus,
-fieldset[disabled] .btn-primary.focus {
-	background: $deep_pink; 
-	color: white; 
-}
-
 //ホバーしたときの色
 .btn-primary:hover {
 	background-color: $pink;
@@ -74,20 +46,6 @@ fieldset[disabled] .btn-primary.focus {
 .list-btn-primary {
 	background-color: $navy;
 	border: none;
-}
-
-.list-btn-primary, .list-btn-primary:focus,
-.list-btn-primary:active, .list-btn-primary:active:focus, .list-btn-primary:active:hover, .list-btn-primary:active.focus,
-.list-btn-primary.active, .list-btn-primary.active:focus, .list-btn-primary.active:hover, .list-btn-primary.active.focus,
-.open > .dropdown-toggle.list-btn-primary,
-.open > .dropdown-toggle.list-btn-primary:hover,
-.open > .dropdown-toggle.list-btn-primary:focus,
-.open > .dropdown-toggle.list-btn-primary.focus,
-.list-btn-primary.disabled:hover, .list-btn-primary[disabled]:hover, fieldset[disabled] .list-btn-primary:hover,
-.list-btn-primary.disabled:focus, .list-btn-primary[disabled]:focus, fieldset[disabled] .list-btn-primary:focus,
-.list-btn-primary.disabled.focus, .list-btn-primary[disabled].focus, fieldset[disabled] .list-btn-primary.focus {
-	background: $navy; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
-	color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
 }
 
 //ホバーしたときの色
@@ -115,7 +73,7 @@ hr.linebook {
 	box-sizing: border-box;
 	border-radius: 4px;
 	width: 100%;
-	max-width: 380px;
+	max-width: 750px;
 	height: 100%;
 	font-size: 16px;
 	text-align: left;
@@ -123,16 +81,17 @@ hr.linebook {
 	border: 1px solid #000000;
 }
 
-//中央配置
-.row {
-	margin: 0 auto;
+//bookアイコンの位置
+.icon-positions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 //bookアイコンのサイズ
 .icon-size{
 	font-size: 6em;
 	@media (max-width: 767px) {
-	//767px画面サイズが小さくなったとき、下記の大きさにしますよ
 	font-size: 3em;
 	}
 }
