@@ -1,22 +1,23 @@
 <div class="row justify-content-center">
   <div class="mx-auto">
     <h1>本棚</h1>
-    <div class="py-3 mb-5 d-grid gap-1 col-6 mx-auto">
-      <%= link_to '本を登録する', new_user_book_path, class: "btn btn-pink" %>
+    <div class="py-3 mb-4 d-grid gap-1 col-6 mx-auto">
+      <%= link_to '本を登録する', new_user_book_path, class: "btn btn-primary" %>
     </div>
+    <div class="py-1 mb-2 d-grid gap-1 col-6 mx-auto">
+      <%= link_to '登録している本一覧', "#", class: "btn list-btn-primary" %>
+    </div>
+    <hr class="linebook">
     <div class="row justify-content-md-center">
       <% @books.each do |book| %>
         <div class="row">
-          <div class="col-2">
+          <div class="col-3">
             <%= link_to user_book_path(current_user, book) do %>
-              <i class="fas fa-book fa-3x"></i>
+              <i class="fas fa-book icon-size"></i>
             <% end %>
           </div>
-          <div class="col-10">
-            <div class="row">
-              <div class="col-6 text-break">
-                <h4><%= book.book_name %></h4>
-              </div>
+          <div class="col-9">
+            <div class="row"> 
               <div class="col-3">  <%# ステータスによってバッチの色を変更する %>
                 <% if book.status == "未読" %>
                   <span class="badge bg-gray">未読</span>
@@ -26,24 +27,31 @@
                   <span class="badge bg-navy">読了</span>
                 <% end %>
               </div>
-              <div class="col-3">
+              <div class="col-2">
                 <p><%= book.total_read_time_sec.utc.strftime('%R') %></p>
+              </div>
+              <br>
+              <div class="col-12 text-break">
+                <h4 class="booktitle"><%= book.book_name %></h4>
               </div>
             </div>
             <div class="row">
               <div class="col-12 text-break">
-                <p><%= book.memo %></p>
+                <div class="memobox">
+                <p class="textmemo"><%= book.memo %></p>
+                </div>
               </div>
             </div>
+            <br>
           </div>
-          <hr>
         </div>
       <% end %>
     </div>
+    <hr class="linebook">
     <%# ページネーション %>
     <div class="pagination justify-content-center">
       <%= paginate @books %>
+        <nav aria-label="Page navigation example"></nav>
     </div>
-
   </div>
 </div>
