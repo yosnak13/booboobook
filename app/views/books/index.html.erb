@@ -17,6 +17,9 @@
             <% end %>
           </div>
           <div class="col-9">
+            <div class="text-break">
+              <h4 class="booktitle"><%= book.book_name %></h4>
+            </div>
             <div class="row">
               <div class="col-4">  <%# ステータスによってバッチの色を変更する %>
                 <% if book.status == "未読" %>
@@ -31,9 +34,6 @@
                 <p><%= book.total_read_time_sec.utc.strftime('%R') %></p>
               </div>
               <br>
-              <div class="text-break">
-                <h4 class="booktitle"><%= book.book_name %></h4>
-              </div>
             </div>
             <div class="row">
               <div class="text-break">
