@@ -30,17 +30,15 @@ class Character < ApplicationRecord
   end
 
   def evolution_character(character)
-    current_pork = Pork.find_by(name: chracter.name)
-    if character.level >= Pork.evolution_level
+    current_pork = Pork.find_by(name: character.name)
+    # if character.level >= Pork.evolution_level
       next_pork = Pork.find_by(name: current_pork.evolve_into)
-      character.update_all(
+      character.update(
         name: next_pork.evolve_into,
-        photo: next_pork.photo,
-        description: next_pork.description,
-        evolution_level: next_pork.evolution_level,
-        evolve_into: next_pork.evolve_into
+        photo: photo.attach(next_pork.photo),
+        description: next_pork.description
       )
       character.save
-    end
+    # end
   end
 end
