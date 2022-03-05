@@ -9,7 +9,6 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :email
-    validates :password
   end
 
   def active_for_authentication?
