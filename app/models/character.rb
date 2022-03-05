@@ -28,4 +28,18 @@ class Character < ApplicationRecord
     character.update(level: character.level)
     character.save
   end
+
+  def evolution_character(character)
+    next_pork = Pork.find_by(name: chracter.name)
+    if character.level >= Pork.evolution_level
+      character.update_all(
+        name: next_pork.evolve_into,
+        photo: next_pork.photo,
+        description: next_pork.description,
+        evolution_level: next_pork.evolution_level,
+        evolve_into: next_pork.evolve_into
+      )
+      character.save
+    end
+  end
 end
