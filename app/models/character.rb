@@ -35,7 +35,10 @@ class Character < ApplicationRecord
       next_pork = Pork.find_by(name: current_pork.evolve_into)
       character.update(
         name: next_pork.evolve_into,
-        photo: photo.attach(next_pork.photo),
+        photo: ActiveStorage::Blob.attach(
+          io: File.open("./db/fixtures/#{next_pork.photo.filename}"),
+          filename: "#{next_pork.photo.filename}"
+        ),
         description: next_pork.description
       )
       character.save
