@@ -3,7 +3,7 @@ class Character < ApplicationRecord
   has_one_attached :photo
 
   with_options presence:true do
-    validates :name, format: {with:/\A[ァ-ヶー－]+\z/}
+    validates :name
     validates :character_type
     validates :level, numericality: true
     validates :exp, numericality: true
@@ -31,14 +31,11 @@ class Character < ApplicationRecord
 
   def evolution_character(character)
     current_pork = Pork.find_by(name: character.name)
-    # if character.level >= Pork.evolution_level
+    # if character.level >= current_pork.evolution_level
       next_pork = Pork.find_by(name: current_pork.evolve_into)
       character.update(
-        name: next_pork.evolve_into,
-        photo: ActiveStorage::Blob.attach(
-          io: File.open("./db/fixtures/#{next_pork.photo.filename}"),
-          filename: "#{next_pork.photo.filename}"
-        ),
+        photo: ActiveStorage::Blob.create_after_upload!(io: File.open("./db/fixtures/#{next_pork.photo.filename}"), filename: "#{next_pork.photo.filename}"),
+        name: current_pork.evolve_into,
         description: next_pork.description
       )
       character.save
