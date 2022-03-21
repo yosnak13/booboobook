@@ -1,6 +1,15 @@
+require 'net/http'
+require 'uri'
+require 'json'
+require 'httparty'
+
 class BooksController < ApplicationController
+  include BooksApi
   before_action :authenticate_user!
-  before_action :find_current_user
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
+  before_action :check_book_flag, only: [:select_book, :change_book]
+  before_action :controll_status_1, only: :update
+  after_action :update_status_into_2,  only: :update
 
   def index
     # 10ページごとにページネーション
@@ -8,12 +17,22 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
-    @user = @book.user
+    @book = current_user.books.find(params[:id])
   end
 
   def new
-    @book = Book.new
+    @results = []
+    if @results.present?
+      @book = Book.new
+    else
+      @book = Book.new
+      @results = url_from_keyword
+    end
+  end
+
+  def url_from_keyword
+    keyword = params[:keyword]
+    BooksApi.get_url(keyword)
   end
 
   def create
@@ -23,18 +42,13 @@ class BooksController < ApplicationController
       redirect_to user_books_path
     else
       render :new
-    end  
-  end
-
-  def edit
-    @book = Book.find(params[:id])
-    if current_user.id != @book.user_id
-      redirect_to user_books_path
     end
   end
 
+  def edit
+  end
+
   def update
-    @book = Book.find(params[:id])
     if @book.update(book_params)
       flash[:notice] = "書籍変更が完了しました"
       redirect_to user_book_path(@book)
@@ -44,23 +58,53 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
-    redirect_to user_books_path
+    if @book.status == "読書中"
+      flash[:notice] = "読書中の書籍は削除できません"
+      render :show
+    else
+      @book.destroy
+      redirect_to user_books_path
+    end
+  end
+
+  def url_from_keyword
+    keyword = params[:keyword]
+    BooksApi.get_url(keyword)
   end
 
   private
-  
+
   def book_params
     params.require(:book).permit(:book_name, :status, :memo)
   end
 
-  def find_current_user
-    @user = current_user
+  def find_book
+    @book = Book.find(params[:id])
   end
 
-  def find_book
-    @user = current_user
-    @book = @user.books
+  def check_book_flag
+    @current_book = current_user.books.find_by(status: 1)
+    @other_books = current_user.books.where(status: 0).
+      or(current_user.books.where(status: 2))
+    @status_1 = "読書中"
+  end
+
+  def change_book_status_params
+    params.require(:book).permit(:status)
+  end
+
+  def controll_status_1
+    if current_user.books.find_by(status: 1).present?
+      @last_status_1 = current_user.books.find_by(status: 1)
+    else
+      @last_status_1 = current_user.books.last
+    end
+  end
+
+  def update_status_into_2
+    if @last_status_1.status == book_params[:status]
+      @last_status_1.update(status: 2)
+      @last_status_1.save
+    end
   end
 end

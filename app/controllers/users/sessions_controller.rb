@@ -21,7 +21,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(user)
     if current_user.characters.presence == nil
-      first_registration_user_path(user)
+      user_first_registration_path(user)
     else
       users_path(user)
     end

@@ -16,8 +16,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      flash[:notice] = "ユーザー情報を変更しました"
+      redirect_to user_path(@user)
+    else
+      flash[:notice] = "入力情報が正しくありません"
+      render :edit
+    end
   end
 
   def top

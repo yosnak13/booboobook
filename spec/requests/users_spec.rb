@@ -64,7 +64,7 @@ RSpec.describe "Users", type: :request do
 
       it "初回ログイン後#first_registrationsページ遷移すること" do
         sign_in user
-        get first_registration_user_path(user)
+        get user_first_registration_path(user)
         expect(response).to have_http_status(200)
       end
     end
