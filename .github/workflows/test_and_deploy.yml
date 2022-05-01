@@ -3,8 +3,8 @@ name: Test and Deploy
 on:
   pull_request:
 
-  jobs:
-   test:
+jobs:
+  test:
     name: Test
     runs-on: ubuntu-latest
 
