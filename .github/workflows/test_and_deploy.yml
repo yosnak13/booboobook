@@ -39,15 +39,23 @@ jobs:
           bundle config --local without production
           bundle install
 
-      - name: Database create and migrate
-        run: |
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:migrate RAILS_ENV=test
-          bundle exec rails db:seed RAILS_ENV=test
+      # - name: Database create and migrate
+      #   run: |
+      #     bundle exec rails db:create RAILS_ENV=test
+      #     bundle exec rails db:migrate RAILS_ENV=test
+      #     bundle exec rails db:seed RAILS_ENV=test
+      - name: create db
+        run: bundle exec rails db:create RAILS_ENV=test
+
+      - name: migrate db
+        run: bundle exec rails db:migrate RAILS_ENV=test
+
+      - name: db:seed
+        run: bundle exec rails db:seed
 
       - run: RAILS_ENV=test bundle exec rails assets:precompile
 
-      - name: Run Rspec
-        run: bundle exec rspec
-        env:
-          RAILS_ENV: test
+      # - name: Run Rspec
+      #   run: bundle exec rspec
+      #   env:
+      #     RAILS_ENV: test
