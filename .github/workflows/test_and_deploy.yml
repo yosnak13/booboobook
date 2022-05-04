@@ -1,0 +1,57 @@
+name: Test and Deploy
+
+on:
+  pull_request:
+
+jobs:
+  rspec:
+    name: rspec
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root_password
+          MYSQL_DATABASE: foo
+          MYSQL_USER: user1
+          # MYSQL_PASSWORD: user1_password
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6.5
+
+      - name: Cache bundle
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: bundle-v1-${{ hashFiles('Gemfile.lock') }}
+
+      - name: Run bundle install
+        run: |
+          bundle config --local path vendor/bundle
+          bundle config --local without production
+          bundle install
+
+      - name: Database create and migrate
+        run: |
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
+          bundle exec rails db:seed RAILS_ENV=test
+
+      - run: RAILS_ENV=test bundle exec rails assets:precompile
+
+      - name: Run Rspec
+        run: bundle exec rspec
+        env:
+          RAILS_ENV: test
