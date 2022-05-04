@@ -28,7 +28,7 @@ test:
   <<: *default
   host: foo
   port: 3306
-  username: user1
+  username: test_user
   password: root_password
 
 # As with config/secrets.yml, you never want to store sensitive information,
