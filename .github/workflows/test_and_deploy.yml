@@ -13,10 +13,7 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: app_test
-          MYSQL_USER: test_user
-          # MYSQL_PASSWORD: user1_password
+          MYSQL_ROOT_PASSWORD: root
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s
