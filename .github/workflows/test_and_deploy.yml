@@ -14,8 +14,8 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: foo
-          # MYSQL_USER: user1
+          MYSQL_DATABASE: test
+          MYSQL_USER: test_user
           # MYSQL_PASSWORD: user1_password
         options: >-
           --health-cmd "mysqladmin ping"

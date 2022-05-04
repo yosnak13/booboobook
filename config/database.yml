@@ -26,10 +26,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  host: foo
+  host: test
   port: 3306
   username: test_user
   password: root_password
+  database: github_actions_for_rspec
+  recconect: false
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
