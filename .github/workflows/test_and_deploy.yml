@@ -43,6 +43,11 @@ jobs:
           bundle config --local without production
           bundle install
 
+      - name: Setup Database
+        env:
+          RAILS_ENV: test
+        run: sudo systemctl start mysql
+
       - name: Database create and migrate
         run: |
           bundle exec rails db:create RAILS_ENV=test

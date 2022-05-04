@@ -30,7 +30,7 @@ test:
   port: 3306
   username: test_user
   password: root_password
-  database: github_actions_for_rspec
+  database: app_test
   recconect: false
 
 # As with config/secrets.yml, you never want to store sensitive information,
