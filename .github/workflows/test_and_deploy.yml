@@ -13,16 +13,12 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: foo
-          MYSQL_USER: user1
-          # MYSQL_PASSWORD: user1_password
+          MYSQL_ROOT_PASSWORD: root
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
 
     steps:
       - uses: actions/checkout@v2
@@ -47,11 +43,10 @@ jobs:
         run: |
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
-          bundle exec rails db:seed RAILS_ENV=test
 
       - run: RAILS_ENV=test bundle exec rails assets:precompile
 
-      - name: Run Rspec
-        run: bundle exec rspec
-        env:
-          RAILS_ENV: test
+      # - name: Run Rspec
+      #   run: bundle exec rspec
+      #   env:
+      #     RAILS_ENV: test

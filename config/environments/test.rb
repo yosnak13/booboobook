@@ -31,8 +31,6 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory
   config.active_storage.service = :test
 
-  config.action_mailer.default_url_options = { host: 'example.com'}
-  
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
@@ -45,4 +43,19 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.default_url_options = {
+    host: ENV["APP_ROOT_URL"],
+  }
+
+  # mail setting
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :user_name => ENV["GMAIL_ADDRESS"],
+    :password => ENV["GMAIL_2FACTOR_PASSWORD"],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
