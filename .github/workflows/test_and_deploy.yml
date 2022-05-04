@@ -16,7 +16,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: root_password
           MYSQL_DATABASE: foo
           MYSQL_USER: user1
-          MYSQL_PASSWORD: user1_password
+          # MYSQL_PASSWORD: user1_password
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s
