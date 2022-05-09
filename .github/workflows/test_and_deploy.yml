@@ -7,6 +7,10 @@ jobs:
   rspec:
     name: rspec
     runs-on: ubuntu-latest
+    env:
+      GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS}}
+      GMAIL_2FACTOR_PASSWORD: ${{ secrets.GMAIL_2FACTOR_PASSWORD}}
+
     services:
       mysql:
         image: mysql:5.7
