@@ -28,11 +28,11 @@ test:
   adapter: mysql2
   encoding: utf8
   username: root
-  password: root
+  password: password
   host: 127.0.0.1
   port: 3306
   database: app_test
-  recconect: false
+  socket: /var/run/mysqld/mysqld.sock
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

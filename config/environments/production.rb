@@ -94,8 +94,9 @@ Rails.application.configure do
 
   # default url
   config.action_mailer.default_url_options = {
-    host: ENV["APP_PRODUCTION_URL"], # 本番環境ではEIPを記入
-    port: 3000
+    host: ENV["APP_PRODUCTION_URL"], # 本番環境ではEIPと:を記入
+    # port: 3000,
+    # protocol: 'https'
   }
 
   # mail setting

@@ -7,13 +7,17 @@ jobs:
   rspec:
     name: rspec
     runs-on: ubuntu-latest
+    env:
+      GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+      GMAIL_2FACTOR_PASSWORD: ${{ secrets.GMAIL_2FACTOR_PASSWORD }}
+
     services:
       mysql:
         image: mysql:5.7
         ports:
           - 3306:3306
         env:
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: password
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s
@@ -46,7 +50,7 @@ jobs:
 
       - run: RAILS_ENV=test bundle exec rails assets:precompile
 
-      # - name: Run Rspec
-      #   run: bundle exec rspec
-      #   env:
-      #     RAILS_ENV: test
+      - name: Run Rspec
+        run: bundle exec rspec
+        env:
+          RAILS_ENV: test
