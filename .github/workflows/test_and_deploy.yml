@@ -8,8 +8,8 @@ jobs:
     name: rspec
     runs-on: ubuntu-latest
     env:
-      GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS}}
-      GMAIL_2FACTOR_PASSWORD: ${{ secrets.GMAIL_2FACTOR_PASSWORD}}
+      GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+      GMAIL_2FACTOR_PASSWORD: ${{ secrets.GMAIL_2FACTOR_PASSWORD }}
 
     services:
       mysql:
@@ -39,8 +39,6 @@ jobs:
 
       - name: Run bundle install
         run: |
-          echo "ENV["GMAIL_ADDRESS"]=${{ secrets.GMAIL_ADDRESS }}" >> $GITHUB_ENV
-          echo "ENV["GMAIL_2FACTOR_PASSWORD"]=${{ secrets.GMAIL_2FACTOR_PASSWORD }}" >> $GITHUB_ENV
           bundle config --local path vendor/bundle
           bundle config --local without production
           bundle install
