@@ -10,6 +10,8 @@ jobs:
     env:
       GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
       GMAIL_2FACTOR_PASSWORD: ${{ secrets.GMAIL_2FACTOR_PASSWORD }}
+      ADMIN_MAIL: ${{ secrets.ADMIN_MAIL }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 
     services:
       mysql:
