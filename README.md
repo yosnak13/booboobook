@@ -72,23 +72,23 @@ URLはデプロイ後に記載予定
 - docker version:20.10.7
 
 【テスト】
-RSpec
-GithubActions
+- RSpec
+- GithubActions
 
 【webサーバー】
-Nginx（予定）
+- Nginx（予定）
 
 【インフラ（予定）】
-AWS EC2、RDS、S3を利用予定
+- AWS EC2、RDS、VPC、S3を利用予定
 
 【OS】
-MacOS
-Windows10
+- macOS
+- Windows10
 
 
 ## 作成者
 
-yosnak13: https://github.com/yosnak13
-Itaru-Nakaya: https://github.com/Itaru-Nakaya
-1994reka３: https://github.com/1994reka3
-AkaneOtani: https://github.com/AkaneOtani
+yosnak13: https://github.com/yosnak13<br>
+Itaru-Nakaya: https://github.com/Itaru-Nakaya<br>
+1994reka３: https://github.com/1994reka3<br>
+AkaneOtani: https://github.com/AkaneOtani<br>
