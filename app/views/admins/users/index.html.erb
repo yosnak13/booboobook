@@ -1,0 +1,39 @@
+<%= render "layouts/admin_header" %>    <%# 管理者ヘッダーの表示 %>
+
+<div class="row justify-content-center">
+  <div class="col-md-9 mx-auto">
+    <h1>ユーザー一覧</h1>
+
+    <hr>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+          <th>利用状況</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr class="admins_user_index_clickable" data-link="<%= admins_user_path(user) %>">
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <% if user.is_deleted == true %>
+            <td>
+              <div class="badge bg-gray">退会済み</div>
+            </td>
+          <% else %>
+            <td>
+              <div class="badge bg-pink">利用中</div>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

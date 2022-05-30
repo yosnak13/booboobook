@@ -1,0 +1,131 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$pink: #fcbcd4;
+$deep_pink: #fc6c8c;
+$light_gray: #f1f1f1;
+$mid_gray: #d1cfcf;
+$dark_gray: #8e8d8d;
+$navy: #25507c;
+
+// 書籍詳細ページのステータスバッチ
+.bg-pink {
+  color: #fff;
+  background-color: #fc6c8c;
+}
+
+.bg-gray {
+  color: #fff;
+  background-color: #8e8d8d;
+}
+
+.bg-navy {
+  color: #fff;
+  background-color: #25507c;
+}
+
+.bg-light-pink {
+  color: #fff;
+  background-color: #fcbcd4;
+}
+
+//本を追加するボタン設定
+.btn-primary {
+  background: $deep_pink;
+  background-color: $deep_pink;
+  border: none;
+}
+
+//ホバーしたときの色
+.btn-primary:hover {
+  background-color: $pink;
+}
+
+//クリックしたときの色
+.btn-primary:active {
+  background-color: $deep_pink;
+}
+
+//登録している本一覧の文字設定
+.list-btn-primary {
+  background-color: $navy;
+  border: none;
+}
+
+//ホバーしたときの色
+.list-btn-primary:hover {
+  color: white;
+  background-color: $mid_gray;
+}
+
+//登録している本一覧の文字設定
+.list-btn-primary:active {
+  background-color: $navy;
+}
+
+//ライン
+hr.linebook {
+  color: black;
+  height: 1px;
+  width: 60%;
+  margin: 5% auto;
+  border: none;
+  @media (max-width: 767px) {
+    width: auto;
+  }
+}
+
+//本のmemo
+.memobox {
+  box-sizing: border-box;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 750px;
+  height: 100%;
+  font-size: 16px;
+  text-align: left;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+//bookアイコンの位置
+.icon-positions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//bookアイコンのサイズ
+.icon-size {
+  font-size: 6em;
+  @media (max-width: 767px) {
+    font-size: 3em;
+    text-align: center;
+  }
+}
+
+//メモ内のフォントのサイズ
+.textmemo {
+  margin: 6px;
+  font-size: 18px;
+  @media (max-width: 767px) {
+    //767px画面サイズが小さくなったとき、下記の大きさにする
+    font-size: 14px;
+  }
+}
+
+.read-time {
+  @media (max-width: 767px) {
+    text-align: right;
+  }
+}
+
+//h4のフォントサイズ
+.booktitle {
+  font-size: 20px;
+  @media (max-width: 767px) {
+    //767px画面サイズが小さくなったとき、下記の大きさにする
+    font-size: 16px;
+  }
+}

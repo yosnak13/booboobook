@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-md-10 mx-auto mt-3">
+    <h1>マイページ</h1>
+    <hr>
+  </div>
+  <div class="col-md-6 mx-auto">
+    <p>アカウント名：<%= @user.name %></p>
+    <p>メールアドレス：<%= @user.email %></p>
+    <% if user_signed_in? && @user.id == current_user.id %>
+      <%= link_to "登録内容を変更する", edit_user_path(@user), class: "btn btn-pink" %>
+      <button type="button" class="btn btn-gray" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        退会する
+      </button>
+      <%# モーダルここから %>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                退会すると…<br>
+                ①読書記録が削除されます。<br>
+                ②育てたぶたさんのデータが削除されます。<br>
+                本当に退会してもよろしいですか？
+              </p>
+            </div>
+            <div class="modal-footer">
+              <%= link_to "はい", users_hide_path(@user), method: :put, class: "btn btn-pink" %>
+              <button type="button" class="btn btn-gray" data-bs-dismiss="modal">いいえ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%# モーダルここまで %>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-10 mx-auto mt-5">
+    <h1>読書記録</h1>
+    <hr>
+    <table class="table table-bordered">
+      <tbody>
+        <% @books.each do |book| %>
+          <tr>
+            <td style="width: 20%"><%= book.created_at.strftime('%Y/%m/%d') %></td>
+            <td style="width: 60%"><%= book.book_name %></td>
+            <td style="width: 20%"><%= book.total_read_time_sec.utc.strftime('%H時間%M分') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

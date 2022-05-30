@@ -1,0 +1,72 @@
+$pink: #fcbcd4;
+$deep_pink: #fc6c8c;
+$light_gray: #f1f1f1;
+$mid_gray: #d1cfcf;
+$dark_gray: #8e8d8d;
+$navy: #25507c;
+
+// カラーを画面幅に合うよう調整
+.backcolor {
+  margin: 0 calc(50% - 50vw);
+}
+
+// レスポンシブの際に画面幅とテキストの余白調整
+.content-padding {
+  padding: 0 8%;
+}
+
+// アラートメッセージの下部余白消去
+.alert {
+  margin-bottom: 0px;
+}
+
+// h1文字色
+.h1color {
+  color: $navy;
+}
+
+// アプリ説明文字色
+.introduction {
+  color: $navy;
+}
+
+// バックグラウンドにピンク色の設定
+.background-pink {
+  background-color: $pink;
+  height: 380px;
+}
+
+// 登録ボタンの通常時設定
+.btn-registration {
+  background-color: white;
+  width: 160px;
+  color: $navy;
+  font-weight: bold;
+}
+
+// 登録ボタンのホバー時設定
+.btn-registration:hover {
+  background-color: $deep_pink;
+  color: white;
+  font-weight: bold;
+}
+
+// 登録ボタンのクリック時設定
+.btn-registration:active {
+  background-color: $deep_pink;
+  color: white;
+  font-weight: bold;
+}
+
+// ログインボタン設定
+.login-btn {
+  font-weight: bold;
+}
+
+// ぶたさん写真
+.top-image {
+  position: relative;
+  top: 80px;
+  text-align: center;
+  margin: auto;
+}

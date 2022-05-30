@@ -1,0 +1,15 @@
+$pink: #fcbcd4;
+$deep_pink: #fc6c8c;
+$light_gray: #f1f1f1;
+$mid_gray: #d1cfcf;
+$dark_gray: #8e8d8d;
+$navy: #25507c;
+
+.background {
+  background-color: $pink;
+  margin: 0 calc(50% - 50vw);
+}
+
+.picture {
+  text-align: center;
+}
