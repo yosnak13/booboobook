@@ -2,21 +2,22 @@
 
 ## アプリケーション名
 
-**BooBooBook**
+**Boo!Boo!Book**
 <br>
-読書をしながらぶたさんを育てる読書週間を身につけるアプリケーションです。学習時間をなかなか確保できない、もっと楽しみを作りたいという思いからプロジェクトを立ち上げて、開発に至りました。豚の鳴き声「Boo」と「Book」を掛け合わせたかわいいネーミングも長所です。
+読書をしながらぶたさんを育てる読書週間を身につけるアプリケーションです。学習時間をなかなか確保できない、もっと学習に楽しみを作りたいという社員の思いからプロジェクトを立ち上げて、開発に至りました。ネーミングの由来は、日本語の豚の鳴き声「Boo」と「Book」を掛け合わせました。あなたは学習を重ねて、無事にぶたさんを育てることができるかな...？
 
 ## アプリケーション概要
 
 会員登録をして、書籍を登録して読書するアプリケーション。学習時間がそのままぶたさんの経験値となり、ぶたさんを育成することができます。<br>
-初会のログイン<br>
-![初回ログイン.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/674242/2fe48d82-6995-c379-67c2-cfa38629ba16.gif)
-<br>
-書籍登録<br>
-![書籍登録.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/674242/2cb29b71-0828-8997-b7a3-d06e602ef5d0.gif)
-学習時間登録<br>
-![学習時間登録.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/674242/6d813339-7411-2337-e337-604c613f7b6e.gif)
 
+初会のログイン(サインアップ終了後の初会ログインで、書籍を１冊登録します）<br>
+![初回ログイン](https://user-images.githubusercontent.com/64535376/171208107-de032143-7623-408f-a543-72c4cccedd47.gif)<br>
+
+書籍登録（書籍はログイン後複数登録ができます）<br>
+![書籍登録](https://user-images.githubusercontent.com/64535376/171208167-46568d2f-4b95-43bd-ac64-8229b7f4a7c8.gif)<br>
+
+学習時間登録（学習時間を記録すると、1分=1経験値として豚さんを育てレベルアップを狙えます）<br>
+![学習時間登録](https://user-images.githubusercontent.com/64535376/171208210-6faac327-3370-40ff-b770-dfeb1de159d8.gif)
 
 
 ## アプリケーション機能
@@ -87,7 +88,7 @@ PJ参加後に初めてHTMLの学習から開始したメンバーも、2ヶ月�
 - Windows10
 - Amazon Linux2(想定する本番環境サーバー)
 
-## 作成者
+## 作成者（一部）
 
 yosnak13: https://github.com/yosnak13<br>
 Itaru-Nakaya: https://github.com/Itaru-Nakaya<br>
