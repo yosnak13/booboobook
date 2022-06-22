@@ -7,6 +7,11 @@ COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle config --local set path 'vendor/bundle' \
   && bundle install
 COPY . /app
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+
 # puma.sockを配置するディレクトリを作成
 RUN mkdir -p tmp/sockets && \
   mkdir -p /tmp/public && \
