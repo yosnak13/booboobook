@@ -2,6 +2,9 @@ name: Test and Deploy
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   rspec:
@@ -57,3 +60,29 @@ jobs:
         run: bundle exec rspec
         env:
           RAILS_ENV: test
+
+  deploy:
+    name: Deploy app to AWS
+    needs: rspec
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install SSH key
+        run: |
+          mkdir -p -m 700 ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.booboobook-webapp
+          chmod 600 ~/.ssh/booboobook-webapp
+
+      - name: Deploy
+        run: |
+          eval $(ssh-agent)
+          ssh-add ~/.ssh/booboobook-webapp
+          ssh -o StrictHostKeyChecking=no -A webapp@${{ secrets.TARGET_HOSTNAME }} "cd booboobook &&
+          git pull origin main &&
+          ~/.rbenv/shims/bundle config --local deployment true &&
+          ~/.rbenv/shims/bundle config --local without development:test &&
+          ~/.rbenv/shims/bundle install &&
+          RAILS_ENV=production ~/.rbenv/shims/bundle exec rails assets:precompile &&
+          RAILS_ENV=production ~/.rbenv/shims/bundle exec rails db:migrate &&
+          ~/.rbenv/shims/bundle exec pumactl restart"
