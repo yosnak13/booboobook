@@ -63,7 +63,7 @@ jobs:
 
   deploy:
     name: Deploy app to AWS
-    need: rspec
+    needs: rspec
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
