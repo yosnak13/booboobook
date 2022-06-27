@@ -83,8 +83,8 @@ http://13.114.185.122/
 【webサーバー】
 - Nginx
 
-【インフラ（AWSサービス名）】
-- EC2、RDS、VPC、S3
+【インフラ】
+- EC2、RDS、VPC、ELB、S3、Route53、ACM
 
 【OS】
 - macOS
