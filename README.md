@@ -51,7 +51,7 @@ http://13.114.185.122/
 デザインはFigmaで設計：https://www.figma.com/file/G71md7HnY7CXsciVlH8q6w/%E3%82%A2%E3%83%97%E3%83%AA%E4%BD%BF%E7%94%A8%E6%9B%B8?node-id=0%3A1
 
 ## インフラ構成図
-![infra](https://user-images.githubusercontent.com/64535376/174627032-b29b9222-34e8-4600-8fed-59621c2a7258.png)
+![infra](https://user-images.githubusercontent.com/64535376/176882175-eac1544f-05e2-4571-b663-8390e1ec4bb3.png)
 
 
 ## 利用方法
