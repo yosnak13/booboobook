@@ -27,6 +27,7 @@ gem 'kaminari'
 gem 'json'
 gem 'httparty'
 gem 'aws-sdk-s3', '~> 1', require: false
+gem 'chartkick'
 
 
 group :development, :test do
