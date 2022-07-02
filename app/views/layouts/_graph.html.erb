@@ -1,1 +1,21 @@
 
+
+
+
+<%#
+ログイン中のユーザーのStudyTimesを全て抽出したい。
+User -< Books -< StudyTimes
+
+【方法】
+SQLを活用して抽出
+booksから、User.IDがcurrent_userのものを抽出し、変数に代入
+
+
+SELECT * FROM `books` where user_id:"#{current_user.id}";
+
+【メモ】
+変数に、userの全てのbookを格納
+その変数から、study_timesをStudyTimeテーブルから取得する
+
+
+%>
