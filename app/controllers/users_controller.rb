@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    total_study_times = User.joins(books: :study_times).where(id: "#{@user.id}")
   end
 
   def edit
