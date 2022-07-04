@@ -10,7 +10,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
-    total_study_times = User.joins(books: :study_times).where(id: "#{@user.id}")
+    total_study_times = User.includes(books: :study_times).find_by_id(@user.id)
+    @st= total_study_times.books.map{ |book| book.study_times }.flatten
+
   end
 
   def edit
