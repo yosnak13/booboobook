@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @books = @user.books
     total_study_times = User.includes(books: :study_times).find_by_id(@user.id)
     @st= total_study_times.books.map{ |book| book.study_times }.flatten
-
   end
 
   def edit
