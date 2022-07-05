@@ -122,6 +122,8 @@ GEM
     ffi (1.15.3)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    groupdate (6.1.0)
+      activesupport (>= 5.2)
     httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -320,6 +322,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_bot_rails
+  groupdate (~> 6.1)
   httparty
   jbuilder (~> 2.5)
   jquery-rails

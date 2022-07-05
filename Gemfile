@@ -28,6 +28,7 @@ gem 'json'
 gem 'httparty'
 gem 'aws-sdk-s3', '~> 1', require: false
 gem 'chartkick'
+gem 'groupdate', '~> 6.1'
 
 
 group :development, :test do
