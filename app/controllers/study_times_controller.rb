@@ -38,6 +38,6 @@ class StudyTimesController < ApplicationController
   end
 
   def study_time_params
-    params.require(:study_time).permit(:study_date, :study_time, :book_id)
+    params.require(:study_time).permit(:study_date, :study_time, :user_id, :book_id)
   end
 end
