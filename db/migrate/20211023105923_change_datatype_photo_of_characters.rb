@@ -1,5 +1,5 @@
 class ChangeDatatypePhotoOfCharacters < ActiveRecord::Migration[5.2]
-  def change
+  def up
     change_column :characters, :photo, :string
   end
 end
