@@ -3,7 +3,7 @@ FactoryBot.define do
   end
 
   factory :test_book, class: 'book' do
-    association :user, factory: :test_user_tanaka
+    association :user, factory: :user
     isbn { "0000000000" }
     book_name { "プログラムの本 その1" }
     total_read_time { 0 }
@@ -12,7 +12,7 @@ FactoryBot.define do
   end
 
   factory :user_is_reading_book, class: "book" do
-    association :user, factory: :test_user_tanaka
+    association :user, factory: :user
     isbn { "0000000000" }
     book_name { "プログラムの本 その2" }
     total_read_time { 30 }
