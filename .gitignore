@@ -29,3 +29,6 @@
 /vendor
 /db/mysql_data
 .env
+
+# others
+.DS_Store
