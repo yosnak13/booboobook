@@ -65,7 +65,7 @@ RSpec.describe "Users", type: :request do
       it "初回ログイン後#first_registrationsページへリダイレクトすること" do
         sign_in user
         get user_first_registration_path(user)
-        expect(response).to have_http_status(302)
+        expect(response.status).to eq 302
       end
     end
 
