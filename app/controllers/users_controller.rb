@@ -10,9 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
-    # total_study_times = User.includes(books: :study_times).find_by_id(@user.id)
-    # @st= total_study_times.books.map{ |book| book.study_times }.flatten
-    @st = @user.study_times.group(:created_at).sum(:study_time)
+    @graph_of_study_time = @user.study_times.group(:created_at).sum(:study_time)
   end
 
   def edit

@@ -26,7 +26,7 @@ class StudyTimesController < ApplicationController
   private
 
   def current_character_and_book
-    @st = current_user.study_times.group(:created_at).sum(:study_time)
+    @graph_of_study_time = current_user.study_times.group(:created_at).sum(:study_time)
     @character = current_user.characters.find_by(user_id: current_user.id)
     @book = current_user.books.find_by(status: 1)
     if @book == nil
