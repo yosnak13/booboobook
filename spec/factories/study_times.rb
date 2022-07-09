@@ -1,8 +1,5 @@
 FactoryBot.define do
   factory :study_time do
-  end
-
-  factory :normal_study_time, class: 'study_time' do
     association :book, factory: :test_book
     user { book.user }
     study_date { '2022-01-04 01:30:00' }
