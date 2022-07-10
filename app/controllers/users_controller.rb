@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
-    @graph_of_study_time = @user.study_times.group(:created_at).sum(:study_time)
   end
 
   def edit

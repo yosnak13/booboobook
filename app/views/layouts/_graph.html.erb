@@ -1,1 +1,1 @@
-<%= column_chart @graph_of_study_time %>
+<%= column_chart current_user.study_times.group_by_day(:created_at).sum(:study_time), xtitle: "学習日", ytitle: "学習時間（分）" %>
