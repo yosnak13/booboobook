@@ -2,11 +2,13 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "ユーザーサインアップ" do
-    let(:new_user) { create(:user) }
+    before do
+      @new_user = create(:user)
+    end
 
     context "入力値が正常なとき" do
       it "正しく登録できるとき" do
-        expect(new_user).to be_valid
+        expect(@new_user).to be_valid
       end
     end
 
@@ -22,7 +24,6 @@ RSpec.describe User, type: :model do
       end
 
       it "同じメールアドレスで登録できないとき" do
-        correct_user = new_user
         same_email_user = build(:test_user_tanaka, name: "佐藤 次郎")
         expect(same_email_user).not_to be_valid
       end
