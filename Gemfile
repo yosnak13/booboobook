@@ -33,7 +33,7 @@ gem 'groupdate', '~> 6.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', '~> 11.1', '>= 11.1.3'
   gem 'minitest', '~> 5.16', '>= 5.16.2'
   gem 'rake', '~> 13.0', '>= 13.0.6'
 end
