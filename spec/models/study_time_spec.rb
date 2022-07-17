@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe StudyTime, type: :model do
-  describe "読書時間を登録するとき" do
-    # let(:post_study_time) { create(:study_time) }
+  xdescribe "読書時間を登録するとき" do
+    before do
+      @post_study_time = create(:study_time)
+    end
 
     it "入力値が正しいとき" do
-      post_study_time = build(:study_time)
-      expect(post_study_time).to be_valid
-      expect(post_study_time.save).to be_truthy
+      expect(@post_study_time).to be_valid
+      expect(@post_study_time.save).to be_truthy
     end
 
     it "入力値が誤りの場合" do
