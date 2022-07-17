@@ -13,17 +13,23 @@ precompile:
 test:
 	docker-compose run --rm app bundle exec rails test
 
+build:
+	docker-compose build
+
+build-nc:
+	docker-compose build --no-cache
+
+down:
+	docker-compose down
+
 up:
 	docker-compose up -d
 
 stop:
 	docker-compose stop
 
-yarn:
-	docker-compose run --rm app yarn install
+app bash:
+	docker-compose exec app bash
 
-remove-credentials:
-	docker-compose run --rm app rm config/credentials.yml.enc
-
-create-credentials:
-	docker-compose run --rm -e EDITOR=vi app bundle exec rails credentials:edit
+db bash:
+	docker-compose exec db bash
