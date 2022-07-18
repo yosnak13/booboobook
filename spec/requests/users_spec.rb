@@ -54,7 +54,7 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "ログイン" do
-    let(:user) { create(:test_user_tanaka) }
+    let(:user) { create(:user) }
     let(:user_cahracter) { create(:character, user: user) }
 
     context "アカウント認証済みのとき" do
@@ -62,10 +62,10 @@ RSpec.describe "Users", type: :request do
         @pork = create(:pork)
       end
 
-      it "初回ログイン後#first_registrationsページ遷移すること" do
+      it "初回ログイン後#first_registrationsページへリダイレクトすること" do
         sign_in user
         get user_first_registration_path(user)
-        expect(response).to have_http_status(200)
+        expect(response.status).to eq 302
       end
     end
 

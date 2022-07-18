@@ -20,8 +20,14 @@
   </div>
   <div>
     <%= f.number_field :study_time, value: "0", min: 1, max: 600, id: "value" %>分
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :book_id, value: @book.id %>
   </div>
 </div>
   <%= f.submit "登録", class: "btn btn-pink" %>
 <% end %>
+
+<div class="col-md-10 mx-auto mt-5">
+  <h1>読書グラフ</h1>
+  <%= render 'layouts/graph' %>
+</div>

@@ -3,16 +3,14 @@ class StudyTimesController < ApplicationController
   before_action :current_character_and_book
 
   def new
-    @study_times = @book.study_times
-    @study_time = @study_times.new
+    @study_time = StudyTime.new
   end
 
   def create
     book = @book
     character = @character
-    study_time = book.study_times_new
-    study_time.save_study_time(study_time, study_time_params)
-    if study_time.present?
+    @study_time = current_user.study_times.create(study_time_params)
+    if @study_time.present?
       book.increment_total_read_time(book, study_time_params)
       character.increment_character_exp(character, study_time_params)
       character.level_up(character) if character.level < 60
@@ -38,6 +36,6 @@ class StudyTimesController < ApplicationController
   end
 
   def study_time_params
-    params.require(:study_time).permit(:study_date, :study_time, :book_id)
+    params.require(:study_time).permit(:study_date, :study_time, :user_id, :book_id)
   end
 end

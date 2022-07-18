@@ -12,10 +12,6 @@ class Book < ApplicationRecord
     self.total_read_time = Time.at(self.total_read_time)
   end
 
-  def study_times_new
-    study_times.new
-  end
-
   def increment_total_read_time(book, study_time_params)
     posted_read_time = study_time_params.values[1].to_i
     book.increment(:total_read_time, posted_read_time )
