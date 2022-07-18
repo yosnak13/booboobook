@@ -3,7 +3,7 @@ class CreateStudyTimes < ActiveRecord::Migration[5.2]
     create_table :study_times do |t|
       t.references :book,       foreign_key: true, null: false
       t.references :user,       foreign_key: true, null: false
-      t.time :study_date,       null: false
+      t.date :study_date,       null: false
       t.integer :study_time,    null: false
       t.timestamps
     end

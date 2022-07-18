@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2021_10_24_112526) do
   create_table "study_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "book_id", null: false
     t.bigint "user_id", null: false
-    t.time "study_date", null: false
+    t.date "study_date", null: false
     t.integer "study_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
