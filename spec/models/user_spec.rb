@@ -25,7 +25,6 @@ RSpec.describe User, type: :model do
         first_user = build(:test_user_tanaka)
         same_email_user = build(:test_user_tanaka, name: "佐藤 次郎")
         first_user.save
-        binding.pry
         expect(first_user).to be_valid
         expect(same_email_user).not_to be_valid
       end
